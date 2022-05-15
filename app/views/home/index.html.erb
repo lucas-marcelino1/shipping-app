@@ -1,0 +1,31 @@
+<h1> Transportadoras Registradas </h1>
+
+<%=  link_to 'Registrar transportadora', new_carrier_path %>
+
+<% if @carriers.any? %>
+
+  
+  <% @carriers.each do |c| %>
+
+    <dl>
+      <dt>Razão social: </dt>
+      <dd><%= link_to c.corporation_name, edit_carrier_path(c.id)%></dd>
+
+      <dt>Nome Fantasia: </dt>
+      <dd><%=c.brand_name%></dd>
+
+      <dt>CNPJ: </dt>
+      <dd><%=c.registration_number%></dd>
+
+      <dt>Domínio de e-mail: </dt>
+      <dd><%=c.email_domain%></dd>
+
+      <dt>Endereço: </dt>
+      <dd><%=c.address%></dd>
+    </dl>
+
+  <% end %>
+  
+<% else %>
+  <p> Não há transportadoras </p>
+<% end %>
