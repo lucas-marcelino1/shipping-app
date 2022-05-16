@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ShippingApp</title>
+    <title>Frete de Transportadora</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,10 +10,19 @@
   </head>
 
   <body>
-    <%= link_to 'Registrar transportadora', new_carrier_path %>
-    <%= link_to 'Registrar veículo', new_vehicle_path %>
+    <%= link_to 'Home', root_path %> <br>
+    <%= link_to 'Registrar transportadora', new_carrier_path %> <br>
+    <%= link_to 'Registrar veículo', new_vehicle_path %> <br>
+
+    <% if carrier_user_signed_in? %>
+      <%= button_to 'Sair', destroy_carrier_user_session_path, method: :delete %>
+    <% else %>
+      <%= button_to 'Entrar', new_carrier_user_session_path, method: :get %>
+    <% end %>
+
+     <%= alert %> 
+     <%= notice %> 
     <%= yield %> 
-    <%= alert %> 
-    <%= notice %> 
+    
   </body>
 </html>
