@@ -20,6 +20,12 @@
 
       <dt>Endereço: </dt>
       <dd><%=c.address%></dd>
+
+      <dt>Veículos: </dt>
+      <% c.vehicles.each do |v| %>
+        <dd> <%= link_to(v.license_plate, edit_vehicle_path(v.id)) %> </dd>
+      <% end %>
+
     </dl>
 
   <% end %>

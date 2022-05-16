@@ -2,15 +2,15 @@
 
 <% @vehicles.each do |v| %>
 
-  Placa: <%= v.license_plate %>
+  Placa: <%= v.license_plate %> <br>
 
-  Marca: <%= v.brand %>
+  Marca: <%= v.brand %> <br>
 
-  Modelo: <%= v.model %>
+  Modelo: <%= v.model %> <br>
 
-  Ano: <%= v.year %>
+  Ano: <%= v.year %> <br>
 
-  Capacidade máxima: <%= v.maximum_charge %>kg
+  Capacidade máxima: <%= v.maximum_charge %>kg <br>
 
-  Transportadora: <%= v.carrier.brand_name %>
+  Transportadora: <%= v.carrier.brand_name %> <br> <br>
 <% end %>
