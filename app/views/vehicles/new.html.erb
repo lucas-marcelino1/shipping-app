@@ -1,0 +1,49 @@
+<h1> Cadastrar novo veículo </h1>
+
+<div>
+<% if @vehicle.errors.any? %>
+  <ul>
+  <% @vehicle.errors.full_messages.each do |msg| %>
+    <li> <%= msg %>. </li>
+  <% end %>
+  </ul>
+<% end %>
+</div>
+
+<%= form_with(model:@vehicle) do |f| %>
+
+  <div>
+    <%= f.label :license_plate %>
+    <%= f.text_field :license_plate %>
+  </div>
+
+  <div>
+    <%= f.label :brand %>
+    <%= f.text_field :brand %>
+  </div>
+
+  <div>
+    <%= f.label :model %>
+    <%= f.text_field :model %>
+  </div>
+
+  <div>
+    <%= f.label :year %>
+    <%= f.text_field :year %>
+  </div>
+
+  <div>
+    <%= f.label :maximum_charge %>
+    <%= f.text_field :maximum_charge %>
+  </div>
+
+   <div>
+    <%= f.label :carrier_id %>
+    <%= f.collection_select :carrier_id, @carriers, :id, :brand_name %>
+  </div>
+
+  <div>
+    <%= f.submit%>
+  </div>
+
+<% end %>

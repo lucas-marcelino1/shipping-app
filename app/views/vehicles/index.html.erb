@@ -1,0 +1,16 @@
+<h1> Veículos </h1>
+
+<% @vehicles.each do |v| %>
+
+  Placa: <%= v.license_plate %>
+
+  Marca: <%= v.brand %>
+
+  Modelo: <%= v.model %>
+
+  Ano: <%= v.year %>
+
+  Capacidade máxima: <%= v.maximum_charge %>kg
+
+  Transportadora: <%= v.carrier.brand_name %>
+<% end %>

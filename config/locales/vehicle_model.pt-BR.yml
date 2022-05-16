@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      vehicle: 'Veículo'
+    attributes:
+      vehicle:
+        license_plate: "Placa"
+        brand: "Marca"
+        model: "Modelo"
+        year: "Ano"
+        maximum_charge: "Capacidade máxima"
+        carrier_id: "Transportadora"
+        

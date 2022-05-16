@@ -3,4 +3,5 @@ class Carrier < ApplicationRecord
   validates :registration_number, uniqueness: true
   validates :registration_number, length: {is: 18}
   validates :registration_number, format: {with: /\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}/, message: 'deve ter o formato XY.XYZ.XYZ/XYZA-XYZ'}
+  has_many :vehicles
 end
