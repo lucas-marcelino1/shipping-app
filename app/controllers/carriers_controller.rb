@@ -1,4 +1,6 @@
 class CarriersController < ApplicationController
+  before_action :authenticate_admin!
+  
   def new
     @carrier = Carrier.new()
   end

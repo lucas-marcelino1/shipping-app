@@ -1,4 +1,5 @@
 class VehiclesController < ApplicationController
+  before_action :authenticate_carrier_user!
   def new
     @vehicle = Vehicle.new()
   end

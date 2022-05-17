@@ -1,7 +1,7 @@
 <h1> Veículos - <%= @carrier.corporation_name %></h1>
 
 <%= link_to 'Registrar veículo', new_vehicle_path %> <br>
-
+<br>
 <% @vehicles.each do |v| %>
 
   Placa: <%= link_to v.license_plate, edit_vehicle_path(v.id) %> <br>
