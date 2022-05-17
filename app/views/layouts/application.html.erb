@@ -10,15 +10,26 @@
   </head>
 
   <body>
-    <%= link_to 'Home', root_path %> <br>
-    <%= link_to 'Registrar transportadora', new_carrier_path %> <br>
-    <%= link_to 'Registrar veículo', new_vehicle_path %> <br>
+    <div>
+      <%= link_to 'Home', root_path %> <br>
+      <%= link_to 'Registrar transportadora', new_carrier_path %> <br>
+      <%= link_to 'Registrar veículo', new_vehicle_path %> <br>
+    </div>
 
-    <% if carrier_user_signed_in? %>
-      <%= button_to 'Sair', destroy_carrier_user_session_path, method: :delete %>
-    <% else %>
-      <%= button_to 'Entrar', new_carrier_user_session_path, method: :get %>
-    <% end %>
+    <div>
+      <% if carrier_user_signed_in? %>
+        <%= button_to 'Sair', destroy_carrier_user_session_path, method: :delete %> <br>
+        <p>Logado como:</p>
+        <p><%= current_carrier_user.name %> - <%= current_carrier_user.carrier.corporation_name %></p>
+      <% elsif admin_signed_in? %>
+        <%= button_to 'Sair', destroy_admin_session_path, method: :delete %>
+        <p>Logado como:</p>
+        <p><%= current_admin.name %> - Administrador</p>
+      <% else %>
+        <%= button_to 'Acesso transportadora', new_carrier_user_session_path, method: :get %>
+        <%= button_to 'Acesso administrador', new_admin_session_path, method: :get %>
+      <% end %>
+    </div>
 
      <%= alert %> 
      <%= notice %> 

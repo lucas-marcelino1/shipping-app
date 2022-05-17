@@ -1,14 +1,12 @@
 pt-BR:
   activerecord:
     models:
-      carrier_user: 'Usuário de transportadora'
+      admin: 'Usuário de transportadora'
     attributes:
-      carrier_user:
+      admin:
         name: "Nome"
         email: "E-mail"
         password: "Senha"
         password_confirmation: "Confirme sua senha"
         remember_me: "Lembre-se de mim"
-        carrier_id: "Transportadora"
-        carrier: "Transportadora"
         
