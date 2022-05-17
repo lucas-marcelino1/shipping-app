@@ -12,8 +12,6 @@
   <body>
     <div>
       <%= link_to 'Home', root_path %> <br>
-      <%= link_to 'Registrar transportadora', new_carrier_path %> <br>
-      <%= link_to 'Registrar veículo', new_vehicle_path %> <br>
     </div>
 
     <div>
@@ -24,7 +22,8 @@
       <% elsif admin_signed_in? %>
         <%= button_to 'Sair', destroy_admin_session_path, method: :delete %>
         <p>Logado como:</p>
-        <p><%= current_admin.name %> - Administrador</p>
+        <p><%= current_admin.name %> - Administrador</p> 
+        <%= link_to 'Registrar transportadora', new_carrier_path %> <br>
       <% else %>
         <%= button_to 'Acesso transportadora', new_carrier_user_session_path, method: :get %>
         <%= button_to 'Acesso administrador', new_admin_session_path, method: :get %>

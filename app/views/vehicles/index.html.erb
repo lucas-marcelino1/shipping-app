@@ -1,8 +1,10 @@
-<h1> Veículos </h1>
+<h1> Veículos - <%= @carrier.corporation_name %></h1>
+
+<%= link_to 'Registrar veículo', new_vehicle_path %> <br>
 
 <% @vehicles.each do |v| %>
 
-  Placa: <%= v.license_plate %> <br>
+  Placa: <%= link_to v.license_plate, edit_vehicle_path(v.id) %> <br>
 
   Marca: <%= v.brand %> <br>
 
@@ -12,5 +14,4 @@
 
   Capacidade máxima: <%= v.maximum_charge %>kg <br>
 
-  Transportadora: <%= v.carrier.brand_name %> <br> <br>
 <% end %>

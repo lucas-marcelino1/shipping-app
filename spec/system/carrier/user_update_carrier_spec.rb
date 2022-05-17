@@ -2,9 +2,11 @@ require 'rails_helper'
 
 describe 'Usuário atualiza a transportadora' do
   it 'com sucesso' do
+    @admin = Admin.create!(name: 'Lucas', email: 'admin2@sistemadefrete.com.br', password: '123456')
     Carrier.create!(corporation_name: 'Reunidas Brasil LTDA', brand_name: 'Rnias', registration_number: '12.345.678/1000-10', 
                     email_domain: 'reunidascom', address: 'Rua São Paulo, 6454 - Massaranduba/SC')
     
+    login_as(@admin)
     visit(root_path)
     click_on('Reunidas Brasil LTDA')
     fill_in('Nome Fantasia', with: 'Reunidas')
@@ -20,9 +22,11 @@ describe 'Usuário atualiza a transportadora' do
   end
 
   it 'com dados inválidos e fracassa' do
+    @admin = Admin.create!(name: 'Lucas', email: 'admin2@sistemadefrete.com.br', password: '123456')
     Carrier.create!(corporation_name: 'Reunidas Brasil LTDA', brand_name: 'Rnias', registration_number: '12.345.678/1000-10', 
       email_domain: 'reunidascom', address: 'Rua São Paulo, 6454 - Massaranduba/SC')
 
+    login_as(@admin)
     visit(root_path)
     click_on('Reunidas Brasil LTDA')
     fill_in('Nome Fantasia', with: '')

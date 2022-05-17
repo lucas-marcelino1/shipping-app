@@ -1,7 +1,10 @@
 require 'rails_helper'
 
-describe 'Usuário registra transportadora' do
+describe 'Usuário admin registra transportadora' do
     it 'com sucesso' do
+        @admin = Admin.create!(name: 'Lucas', email: 'admin2@sistemadefrete.com.br', password: '123456')
+        
+        login_as(@admin, :scope => :admin)
         visit(root_path)
         click_on('Registrar transportadora')
         fill_in('Razão Social', with: 'Expresso São Miguel LTDA')
@@ -20,6 +23,9 @@ describe 'Usuário registra transportadora' do
     end
 
     it 'com dados inválidos e fracassa' do
+        @admin = Admin.create!(name: 'Lucas', email: 'admin2@sistemadefrete.com.br', password: '123456')
+        
+        login_as(@admin, :scope => :admin)
         visit(root_path)
         click_on('Registrar transportadora')
         fill_in('Razão Social', with: '')
