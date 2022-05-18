@@ -1,0 +1,12 @@
+<h1> Preços cadastrados (<%= @user.carrier.corporation_name%>) </h1>
+
+<%= link_to 'Cadastrar preço', new_price_path %>
+
+<% @prices.each do |p| %>
+
+Volumes de <%= p.initial_volume %> (m³) até <%= p.final_volume %> (m³) <br>
+Pesos de <%= p.initial_weight %> (kg) até <%= p.final_weight %> (kg) <br>
+Preço por kilômetro: R$ <%= p.price_per_km %> <br>
+Até <%= p.minimal_distance %> km o valor é R$ <%= p.minimal_price %> <br>
+
+<% end %>

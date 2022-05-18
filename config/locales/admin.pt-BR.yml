@@ -1,7 +1,7 @@
 pt-BR:
   activerecord:
     models:
-      admin: 'Usuário de transportadora'
+      admin: 'Administrador do sistema'
     attributes:
       admin:
         name: "Nome"

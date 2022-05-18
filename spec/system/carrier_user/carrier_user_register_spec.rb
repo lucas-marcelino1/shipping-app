@@ -7,12 +7,12 @@ describe 'Usuário de transportadora se cadastra' do
 
     visit(root_path)
     click_on('Acesso transportadora')
-    click_on('Cadastrar usuário')
+    click_on('Se inscrever')
     fill_in('Nome', with: 'Lucas')
     fill_in('E-mail', with: 'lucas@reunidas.com')
     fill_in('Senha', with: '123456')
     fill_in('Confirme sua senha', with: '123456')
-    click_on('Cadastrar')
+    click_on('Se inscrever')
 
     expect(page).to have_content('Boas vindas! Você realizou seu registro com sucesso.')
 
@@ -22,12 +22,12 @@ describe 'Usuário de transportadora se cadastra' do
    
     visit(root_path)
     click_on('Acesso transportadora')
-    click_on('Cadastrar usuário')
+    click_on('Se inscrever')
     fill_in('Nome', with: 'Lucas')
     fill_in('E-mail', with: 'lucas@reunidas.com')
     fill_in('Senha', with: '123456')
     fill_in('Confirme sua senha', with: '123456')
-    click_on('Cadastrar')
+    click_on('Se inscrever')
 
     expect(page).to have_content('Não foi possível salvar usuário de transportadora')
 

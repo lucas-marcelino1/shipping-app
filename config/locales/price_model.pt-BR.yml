@@ -1,0 +1,15 @@
+pt-BR:
+  activerecord:
+    models:
+      price: 'Preço'
+    attributes:
+      price:
+        initial_weight: "Peso inicial (kg)"
+        final_weight: "Peso final (kg)"
+        initial_volume: "Volume inicial (m³)"
+        final_volume: "Volume final (m³)"
+        price_per_km: "Preço por kilômetro (R$)"
+        minimal_price: "Preço mínimo (R$)"
+        minimal_distance: "Distância mínima (km)"
+        carrier_id: "Transportadora"
+        

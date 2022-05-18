@@ -6,4 +6,5 @@ class Carrier < ApplicationRecord
   validates :registration_number, format: {with: /\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}/, message: 'deve ter o formato XY.XYZ.XYZ/XYZA-XYZ'}
   has_many :vehicles
   has_many :carrier_users
+  has_many :prices
 end
