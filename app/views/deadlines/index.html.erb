@@ -1,5 +1,6 @@
-<h2> Prazos de entrega (<%=@carrier.corporation_name%>) <h2>
-<%= link_to 'Cadastrar prazo de entrega', new_deadline_path %>
+<h2> Prazos de entrega (<%=@carrier.corporation_name%>) </h2>
+
+<p> <%= link_to 'Cadastrar prazo de entrega', new_deadline_path %> </p>
 
 
 <% @deadlines.each do |d| %>

@@ -1,8 +1,8 @@
 <h1> Gestão de transportadoras </h1>
 
 <% if carrier_user_signed_in? %>
-  <%= link_to 'Nossa Frota de Veículos', vehicles_path %>
-  <%= link_to 'Nossos preços', prices_path %>
+  <%= link_to 'Nossa Frota de Veículos', vehicles_path %> ||
+  <%= link_to 'Nossos preços', prices_path %> ||
   <%= link_to 'Nossos prazos de entrega', deadlines_path %>
 
   <h2> Minha transportadora </h2>
@@ -27,6 +27,7 @@
 <% if admin_signed_in? %>
 
   <% if @carriers.any? %>
+    <h2> Transportadoras cadastradas </h2>
     <% @carriers.each do |c| %>
 
       <dl>
@@ -47,7 +48,7 @@
 
         <dt>Veículos: </dt>
         <% c.vehicles.each do |v| %>
-          <dd> <%= link_to(v.license_plate, edit_vehicle_path(v.id)) %> </dd>
+          <dd> <%= link_to(v.license_plate, edit_vehicle_path(v.id)) %> </dd> <br> ||||
         <% end %>
 
       </dl>
@@ -55,6 +56,7 @@
     <% end %>
 
   <% else %>
-    <p> Não há transportadoras </p>
+    <p> Não há transportadoras cadastradas </p>
   <% end %>
+  
 <% end %>
