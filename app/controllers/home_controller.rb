@@ -5,9 +5,7 @@ class HomeController < ApplicationController
       @carriers = Carrier.all
     elsif carrier_user_signed_in?
       @carrier = current_carrier_user.carrier
-    else
-
     end
-
   end
+  
 end

@@ -1,0 +1,9 @@
+<h2> Prazos de entrega (<%=@carrier.corporation_name%>) <h2>
+<%= link_to 'Cadastrar prazo de entrega', new_deadline_path %>
+
+
+<% @deadlines.each do |d| %>
+  <div>
+  De <%= d.initial_distance %>km até <%= d.final_distance %>km o prazo de entrega é <%= d.days %> dias úteis
+  </div>
+<% end %>

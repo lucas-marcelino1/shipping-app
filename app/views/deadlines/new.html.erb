@@ -1,0 +1,29 @@
+<h1> Cadastrar novo veículo </h1>
+
+<div>
+<% if @deadline.errors.any? %>
+  <ul>
+  <% @deadline.errors.full_messages.each do |msg| %>
+    <li> <%= msg %>. </li>
+  <% end %>
+  </ul>
+<% end %>
+</div>
+
+<%= form_with(model:@deadline) do |f| %>
+
+  <div>
+    De <%= f.label :initial_distance %> <%= f.number_field :initial_distance %>km até <%= f.label :final_distance %> <%= f.number_field :final_distance %>km
+    
+  </div>
+
+  <div>
+    <%= f.label :days %>
+    <%= f.text_field :days %>
+  </div>
+
+  <div>
+    <%= f.submit%>
+  </div>
+
+<% end %>

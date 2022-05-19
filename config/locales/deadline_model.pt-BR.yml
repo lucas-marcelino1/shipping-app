@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      deadline: 'Prazo'
+    attributes:
+      deadline:
+        initial_distance: "Distância inicial"
+        final_distance: "Distância final"
+        days: "Prazo (dias úteis)"
+        carrier_id: "Transportadora"
+        carrier: "Transportadora"
+        

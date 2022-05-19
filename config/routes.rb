@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :carrier_users
   root "home#index"
   resources :carriers, only: [:new, :create, :edit, :update]
+  resources :deadlines, only: [:new, :create, :edit, :update, :index]
   resources :vehicles, only: [:index, :new, :create, :edit, :update]
   resources :prices, only: [:index, :new, :create, :edit, :update]
 end
