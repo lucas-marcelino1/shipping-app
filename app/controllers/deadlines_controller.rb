@@ -1,5 +1,5 @@
 class DeadlinesController < ApplicationController
-
+  before_action :authenticate_carrier_user!
   def index
     @carrier = current_carrier_user.carrier
     @deadlines = @carrier.deadlines

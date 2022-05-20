@@ -2,9 +2,10 @@
 
 <p> <%= link_to 'Cadastrar prazo de entrega', new_deadline_path %> </p>
 
-
+<ul>
 <% @deadlines.each do |d| %>
   <div>
-  De <%= d.initial_distance %>km até <%= d.final_distance %>km o prazo de entrega é <%= d.days %> dias úteis
+  <li>De <%= d.initial_distance %>km até <%= d.final_distance %>km o prazo de entrega é <%= d.days %> dias úteis </li>
   </div>
 <% end %>
+</ul>

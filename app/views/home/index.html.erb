@@ -1,6 +1,6 @@
-<h1> Gestão de transportadoras </h1>
 
 <% if carrier_user_signed_in? %>
+<h1> Gestão da <%= Carrier.model_name.human %>: <%= @carrier.corporation_name %> </h1>
   <%= link_to 'Nossa Frota de Veículos', vehicles_path %> ||
   <%= link_to 'Nossos preços', prices_path %> ||
   <%= link_to 'Nossos prazos de entrega', deadlines_path %>
@@ -25,7 +25,7 @@
 <% end %>
 
 <% if admin_signed_in? %>
-
+  <h1> Gestão de transportadoras </h1>
   <% if @carriers.any? %>
     <h2> Transportadoras cadastradas </h2>
     <% @carriers.each do |c| %>

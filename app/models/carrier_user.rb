@@ -11,7 +11,11 @@ class CarrierUser < ApplicationRecord
   def set_carrier
     @user_email_domain = self.email.match(/(?<=@)(\S+)/).to_s
     @carrier = Carrier.where(email_domain: @user_email_domain).first
-    self.carrier = @carrier
+    if @carrier == nil
+      self.errors.add(:carrier, 'deve ter domínio de e-mail cadastrado')
+    else 
+      self.carrier = @carrier
+    end
   end
 
 end
