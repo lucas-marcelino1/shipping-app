@@ -3,7 +3,8 @@
 <h1> Gestão da <%= Carrier.model_name.human %>: <%= @carrier.corporation_name %> </h1>
   <%= link_to 'Nossa Frota de Veículos', vehicles_path %> ||
   <%= link_to 'Nossos preços', prices_path %> ||
-  <%= link_to 'Nossos prazos de entrega', deadlines_path %>
+  <%= link_to 'Nossos prazos de entrega', deadlines_path %> ||
+  <%= link_to 'Ordens de Serviço', service_orders_path %>
 
   <h2> Minha transportadora </h2>
     <dl>

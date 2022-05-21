@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_21_175434) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_21_183110) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -86,6 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_175434) do
     t.string "order_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
     t.index ["carrier_id"], name: "index_service_orders_on_carrier_id"
     t.index ["vehicle_id"], name: "index_service_orders_on_vehicle_id"
   end

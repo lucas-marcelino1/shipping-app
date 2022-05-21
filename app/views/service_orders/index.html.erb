@@ -1,0 +1,14 @@
+<h1> Ordens de serviço pendentes </h1>
+
+<ul>
+<% @service_orders.pending.each do |s| %> 
+  <li>Nº da ordem: <%= link_to s.order_code, service_order_path(s) %></li>
+<% end %>
+</ul>
+
+<h4> Ordens de serviço aprovadas </h4>
+
+
+<% @service_orders.accepted.each do |s| %>
+  <%= link_to s.order_code, service_order_path(s) %>
+<% end %>

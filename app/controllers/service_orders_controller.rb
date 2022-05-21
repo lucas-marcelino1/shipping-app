@@ -1,4 +1,7 @@
 class ServiceOrdersController < ApplicationController
+  before_action :authenticate_carrier_user!, only: [:index, :show, :to_accept]
+  before_action :authenticate_admin!, only: [:new, :create]
+
 
   def new
     @service_order = ServiceOrder.new
@@ -14,7 +17,28 @@ class ServiceOrdersController < ApplicationController
       flash.now[:notice] = 'Não foi possível cadastrar a ordem de serviço.'
       render 'new'
     end
-  
+  end
+
+  def index
+    @service_orders = current_carrier_user.carrier.service_orders
+  end
+
+  def show
+    @os = ServiceOrder.find(params[:id])
+    @vehicles = current_carrier_user.carrier.vehicles
+  end
+
+  def to_accept
+    
+    @service_order = ServiceOrder.find(params[:id])
+    @service_order.vehicle_id = params[:service_order][:vehicle_id]
+    if @service_order.vehicle == nil
+      @carriers = Carrier.order(:name)
+      @service_order.errors.add(:vehicle_id, 'é necessário')
+      redirect_to(service_order_path(@service_order))
+    end
+    @service_order.accepted!
+    redirect_to(root_path, notice: 'Ordem de serviço aceita!')
   end
 
 end

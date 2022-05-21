@@ -1,0 +1,28 @@
+<h1> <%= ServiceOrder.model_name %>: <%= @os.order_code %> </h1>
+
+<div>
+  <%=ServiceOrder.human_attribute_name(:item_code)%>: <%= @os.item_code %> <br>
+  <%=ServiceOrder.human_attribute_name(:weight)%>: <%= @os.weight %> <br>
+  <%=ServiceOrder.human_attribute_name(:volume)%>: <%= @os.volume %> <br>
+  <%=ServiceOrder.human_attribute_name(:pickup_address)%>: <%= @os.pickup_address %> <br>
+  <%=ServiceOrder.human_attribute_name(:delivery_address)%>: <%= @os.delivery_address %> <br>
+  <%=ServiceOrder.human_attribute_name(:recipient_name)%>: <%= @os.recipient_name %> <br>
+  <%=ServiceOrder.human_attribute_name(:recipient_CPF)%>: <%= @os.recipient_CPF %> <br>
+  <%=ServiceOrder.human_attribute_name(:order_code)%>: <%= @os.order_code %> <br>
+</div>
+  
+<% if @os.pending? %>  
+  <div>
+    <%= form_for @os, url: {action: 'to_accept', method: :patch} do |f| %>
+      <%if @vehicles.any? %>
+        <%= f.label :vehicle_id %>
+        <%= f.collection_select :vehicle_id, @vehicles, :id, :license_plate%> <br>
+        <%= f.submit 'Aceitar Ordem de Serviço' %>
+      <% else %>
+        <p> Para aceitar a ordem de serviço, cadastre um veículo!</p>
+        <% end %>
+    <% end %>
+  </div>
+<%else%>
+<p>Ordem de serviço aprovada!</p>
+<%end%>
