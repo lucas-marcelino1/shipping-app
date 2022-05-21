@@ -49,4 +49,13 @@ RSpec.describe Carrier, type: :model do
 
   end
   
+  describe '#description' do
+    it 'Gera uma descrição com o Nome e o CNPJ' do
+      c = Carrier.create(corporation_name: 'Reunidas Brasil LTDA', brand_name: 'Reunidas', registration_number: '12.345.678/1000-10', 
+        email_domain: 'reunidas.com.br', address: 'Rua São Paulo, 6454 - Massaranduba/SC')
+      result = c.description
+
+      expect(result).to eq('Reunidas Brasil LTDA - 12.345.678/1000-10')
+    end
+  end
 end

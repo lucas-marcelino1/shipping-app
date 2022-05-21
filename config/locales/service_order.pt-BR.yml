@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    models:
+      service_order: Ordem de Serviço
+    attributes:
+      service_order:
+        item_code: "Código do item"
+        weight: "Peso"
+        volume: "Volume"
+        pickup_address: "Endereço de coleta"
+        delivery_address: "Endereço de entrega"
+        recipient_name: "Nome do destinatário"
+        recipient_CPF: "CPF do destinatário"
+        carrier_id: 'Transportadora'
+        vehicle_id: 'Veículo'
+        order_code: 'Código da Ordem de Serviço'
+        

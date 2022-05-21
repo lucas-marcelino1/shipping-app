@@ -8,4 +8,10 @@ class Carrier < ApplicationRecord
   has_many :carrier_users
   has_many :prices
   has_many :deadlines
+
+  
+  def description
+    "#{self.corporation_name} - #{self.registration_number}"
+  end
+
 end
