@@ -12,6 +12,7 @@
 </div>
   
 <% if @os.pending? %>  
+
   <div>
     <%= form_for @os, url: {action: 'to_accept', method: :patch} do |f| %>
       <%if @vehicles.any? %>
@@ -20,9 +21,16 @@
         <%= f.submit 'Aceitar Ordem de Serviço' %>
       <% else %>
         <p> Para aceitar a ordem de serviço, cadastre um veículo!</p>
-        <% end %>
+      <% end %>
     <% end %>
   </div>
-<%else%>
-<p>Ordem de serviço aprovada!</p>
+
+  <div>
+    <%= form_for @os, url: {action: 'to_reject', method: :patch} do |f| %>
+        <%= f.submit 'Rejeitar Ordem de Serviço'%>
+    <% end %>
+  </div>
+
+<%elsif @os.accepted?%>
+  <p>Ordem de serviço aprovada!</p>
 <%end%>

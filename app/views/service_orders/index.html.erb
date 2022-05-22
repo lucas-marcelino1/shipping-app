@@ -1,14 +1,32 @@
-<h1> Ordens de serviço pendentes </h1>
+<h1> Ordens de Serviço </h1>
 
+
+<h3> Ordens de serviço pendentes </h3>
 <ul>
 <% @service_orders.pending.each do |s| %> 
   <li>Nº da ordem: <%= link_to s.order_code, service_order_path(s) %></li>
 <% end %>
 </ul>
 
-<h4> Ordens de serviço aprovadas </h4>
-
-
+<h3> Ordens de serviço aprovadas </h3>
+<ul>
 <% @service_orders.accepted.each do |s| %>
-  <%= link_to s.order_code, service_order_path(s) %>
+  
+  <li> <%= link_to s.order_code, service_order_path(s) %> </li>
+   <%= button_to 'Atualizar rota', edit_route_update_path(s.route_update.id), method: :get %>
 <% end %>
+</ul>
+
+<h3> Ordens de serviço finalizadas </h3>
+<ul>
+<% @service_orders.finished.each do |s| %>
+  <li> <%= link_to s.order_code, service_order_path(s) %> </li>
+<% end %>
+</ul>
+
+<h3> Ordens de serviço rejeitadas </h3>
+<ul>
+<% @service_orders.rejected.each do |s| %>
+  <li> <%= link_to s.order_code, service_order_path(s) %> </li>
+<% end %>
+</ul>

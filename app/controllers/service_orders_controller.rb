@@ -1,5 +1,5 @@
 class ServiceOrdersController < ApplicationController
-  before_action :authenticate_carrier_user!, only: [:index, :show, :to_accept]
+  before_action :authenticate_carrier_user!, only: [:index, :show, :to_accept, :to_reject]
   before_action :authenticate_admin!, only: [:new, :create]
 
 
@@ -29,16 +29,23 @@ class ServiceOrdersController < ApplicationController
   end
 
   def to_accept
-    
     @service_order = ServiceOrder.find(params[:id])
     @service_order.vehicle_id = params[:service_order][:vehicle_id]
     if @service_order.vehicle == nil
-      @carriers = Carrier.order(:name)
       @service_order.errors.add(:vehicle_id, 'é necessário')
+      @carriers = Carrier.order(:name)
       redirect_to(service_order_path(@service_order))
     end
     @service_order.accepted!
+    @route_update = RouteUpdate.new(service_order: @service_order)
+    @route_update.save
     redirect_to(root_path, notice: 'Ordem de serviço aceita!')
+  end
+
+  def to_reject
+    @service_order = ServiceOrder.find(params[:id])
+    @service_order.rejected!
+    redirect_to(root_path, notice: 'Ordem de serviço rejeitada!')
   end
 
 end

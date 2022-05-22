@@ -10,4 +10,7 @@ Rails.application.routes.draw do
     patch :to_accept, on: :member
     patch :to_reject, on: :member
   end
+  resources :route_updates, only: [:edit, :update] do
+    patch :to_finish, on: :member
+  end
 end

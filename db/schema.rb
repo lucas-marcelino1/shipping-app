@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_21_183110) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_22_134116) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -73,6 +73,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_183110) do
     t.index ["carrier_id"], name: "index_prices_on_carrier_id"
   end
 
+  create_table "route_updates", force: :cascade do |t|
+    t.date "day"
+    t.time "hour"
+    t.string "local"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "service_order_id", null: false
+    t.index ["service_order_id"], name: "index_route_updates_on_service_order_id"
+  end
+
   create_table "service_orders", force: :cascade do |t|
     t.integer "carrier_id", null: false
     t.integer "vehicle_id"
@@ -105,6 +115,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_183110) do
 
   add_foreign_key "deadlines", "carriers"
   add_foreign_key "prices", "carriers"
+  add_foreign_key "route_updates", "service_orders"
   add_foreign_key "service_orders", "carriers"
   add_foreign_key "service_orders", "vehicles"
   add_foreign_key "vehicles", "carriers"

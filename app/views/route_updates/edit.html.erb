@@ -1,0 +1,37 @@
+<h1> Atualizar Rota da OS: <%= @route_update.service_order.order_code %> </h1>
+
+<div>
+  <% if @route_update.day != nil && @route_update.set_hour != nil && @route_update.local != nil%>
+    <h2> Última atualização </h2>
+      <ul>
+        <li> <%= RouteUpdate.human_attribute_name(:day)%>: <%= I18n.localize(@route_update.day) %> </li>
+        <li> <%= RouteUpdate.human_attribute_name(:hour)%>: <%= @route_update.set_hour %> </li>
+        <li> <%= RouteUpdate.human_attribute_name(:local)%>: <%= @route_update.local %> </li>
+        <%= form_for @service_order, url: {action: 'to_finish', method: :patch} do |f| %>
+          <%= f.submit 'Pacote entregue: Finalizar encomenda' %>
+        <% end %>
+      </ul> 
+  <% end %>
+</div>
+
+<% if @route_update.service_order.accepted? %>
+  <div>
+    <%= form_with(model: @route_update) do |f| %>
+      <%= f.label :day %>
+      <%= f.date_field :day %> <br>
+
+      <%= f.label :hour %>
+      <%= f.time_field :hour %> <br>
+
+      <%= f.label :local %>
+      <%= f.text_field :local %> <br>
+
+      <%= f.submit %> <br>
+    <% end %>
+
+  <% else %>
+    <p> Encomenda já foi entrege ao destinátario </p>
+
+  </div>
+<%end %>
+

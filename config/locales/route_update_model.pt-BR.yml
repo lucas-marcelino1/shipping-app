@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      route_update: 'Rota'
+    attributes:
+      route_update:
+        day: "Dia"
+        hour: "Hora"
+        service_order: 'Ordem de Serviço'
+        service_order_id: 'Ordem de Serviço'
+        local: 'Local'
