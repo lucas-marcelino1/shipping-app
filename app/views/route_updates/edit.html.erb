@@ -1,20 +1,24 @@
 <h1> Atualizar Rota da OS: <%= @route_update.service_order.order_code %> </h1>
 
 <div>
-  <% if @route_update.day != nil && @route_update.set_hour != nil && @route_update.local != nil%>
+  <% if @route_update.day.present? && @route_update.set_hour.present? && @route_update.local.present?%>
     <h2> Última atualização </h2>
       <ul>
         <li> <%= RouteUpdate.human_attribute_name(:day)%>: <%= I18n.localize(@route_update.day) %> </li>
         <li> <%= RouteUpdate.human_attribute_name(:hour)%>: <%= @route_update.set_hour %> </li>
         <li> <%= RouteUpdate.human_attribute_name(:local)%>: <%= @route_update.local %> </li>
-        <%= form_for @service_order, url: {action: 'to_finish', method: :patch} do |f| %>
-          <%= f.submit 'Pacote entregue: Finalizar encomenda' %>
-        <% end %>
       </ul> 
   <% end %>
 </div>
 
+<% if @route_update.local == @service_order.delivery_address %>
+  <%= form_for @service_order, url: {action: 'to_finish', method: :patch} do |f| %>
+    <%= f.submit 'Pacote Entregue: Finalizar Encomenda' %>
+  <% end %>
+<% end %>
+
 <% if @route_update.service_order.accepted? %>
+  <p> Obs: Para habilitar a opção de finalizar encomenda, digite na opção 'Local' exatamente <br>como consta o endereço de entrega da ordem de serviço </p>
   <div>
     <%= form_with(model: @route_update) do |f| %>
       <%= f.label :day %>

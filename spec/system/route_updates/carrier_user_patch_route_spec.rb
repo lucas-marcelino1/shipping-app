@@ -66,12 +66,12 @@ describe 'Usuário de transportadora' do
     click_on('Aceitar Ordem de Serviço')
     click_on('Ordens de Serviço')
     click_on('Atualizar rota')
-    fill_in('Hora', with: '05:05')
+    fill_in('Hora', with: '05:05 PM')
     fill_in('Dia', with: '05-25-22')
-    fill_in('Local', with: 'Curitiba')
+    fill_in('Local', with: 'Bairro 72')
     click_on('Atualizar Rota')
-    click_on('Pacote entregue: Finalizar encomenda')
-
+    click_on('Pacote Entregue: Finalizar Encomenda')
+    
     expect(page).to have_content('A ordem de serviço foi finalizada!')
   end
 end

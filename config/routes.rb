@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :service_orders, only: [:index, :new, :create, :show] do
     patch :to_accept, on: :member
     patch :to_reject, on: :member
+    get :search, on: :collection
   end
   resources :route_updates, only: [:edit, :update] do
     patch :to_finish, on: :member

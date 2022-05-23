@@ -34,11 +34,11 @@ class ServiceOrdersController < ApplicationController
     if @service_order.vehicle == nil
       @service_order.errors.add(:vehicle_id, 'é necessário')
       @carriers = Carrier.order(:name)
-      redirect_to(service_order_path(@service_order))
+      return redirect_to(service_order_path(@service_order))
     end
     @service_order.accepted!
-    @route_update = RouteUpdate.new(service_order: @service_order)
-    @route_update.save
+    @route_update = RouteUpdate.new(service_order: @service_order, day: Date.today, hour: Time.now, local: 'Ainda não saiu para entrega.')
+    @route_update.save!
     redirect_to(root_path, notice: 'Ordem de serviço aceita!')
   end
 
@@ -46,6 +46,12 @@ class ServiceOrdersController < ApplicationController
     @service_order = ServiceOrder.find(params[:id])
     @service_order.rejected!
     redirect_to(root_path, notice: 'Ordem de serviço rejeitada!')
+  end
+
+  def search
+    @code = params["query"]
+    @s = ServiceOrder.find_by(order_code: @code)
+    @route_update = @s.route_update
   end
 
 end

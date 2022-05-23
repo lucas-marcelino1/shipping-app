@@ -1,0 +1,16 @@
+<h1>Busca de encomendas</h1>
+
+<h3> Encomenda #<%=@code%> encontrada.</h3>
+  <dl>
+    <dt>Última atualização:</dt>
+    <dd><%=I18n.localize(@route_update.day)%></dd>
+
+    <dt><%=RouteUpdate.human_attribute_name(:hour)%>:</dt>
+    <dd><%=@route_update.set_hour%></dd>
+
+    <dt><%=RouteUpdate.human_attribute_name(:local)%>:</dt>
+    <dd><%=@route_update.local%></dd>
+
+    <dt>Veículo:</dt>
+    <dd><%=@route_update.service_order.vehicle.license_plate%> - <%=@route_update.service_order.vehicle.brand%> </dd>
+  <dl>

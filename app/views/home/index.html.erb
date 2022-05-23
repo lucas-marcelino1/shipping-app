@@ -23,9 +23,9 @@
         <dd> <%= link_to(v.license_plate, edit_vehicle_path(v.id)) %> </dd>
       <% end %>
     </dl>
-<% end %>
 
-<% if admin_signed_in? %>
+<% elsif admin_signed_in? %>
+
   <h1> Gestão de transportadoras </h1>
   <% if @carriers.any? %>
     <h2> Transportadoras cadastradas </h2>
@@ -59,5 +59,11 @@
   <% else %>
     <p> Não há transportadoras cadastradas </p>
   <% end %>
-  
+
+  <%else%>
+    <%= form_with(url: search_service_orders_path, method: :get) do |f| %>
+      <%= f.label :query, 'Buscar encomenda'%>
+      <%= f.text_field :query %>
+      <%= f.submit 'Buscar' %>
+    <% end %>
 <% end %>
