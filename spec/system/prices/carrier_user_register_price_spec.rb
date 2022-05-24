@@ -44,7 +44,7 @@ describe 'Usuário de transportadora cadastra preços' do
     click_on('Cadastrar Preço')
 
     expect(page).to have_content('Não foi possível cadastrar o preço!')
-    expect(page).to have_content('Volume inicial (m³) deve ser um número válido.')
+    expect(page).to have_content('Volume inicial (m³) deve ser um número válido, use o . (ponto) como separador decimal.')
 
   end
 end

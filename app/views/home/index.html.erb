@@ -27,6 +27,21 @@
 <% elsif admin_signed_in? %>
 
   <h1> Gestão de transportadoras </h1>
+  <%= form_with(url: search_prices_path, method: :get) do |f| %>
+    <%= f.label 'Consultar orçamento'%> <br>
+
+    <%= f.label :volume, 'Volume' %>
+    <%= f.text_field :volume %>
+
+    <%= f.label :weight, 'Peso' %>
+    <%= f.text_field :weight %>
+
+    <%= f.label :distance, 'Distância' %>
+    <%= f.text_field :distance %>
+
+    <%= f.submit 'Consultar' %>
+  <% end %>
+
   <% if @carriers.any? %>
     <h2> Transportadoras cadastradas </h2>
     <% @carriers.each do |c| %>

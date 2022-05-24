@@ -1,0 +1,14 @@
+<% @prices_and_deadlines.each_pair do |key, value| %>
+  <% if key.present? && value.present?%>
+    <ul>
+    <li><%=Carrier.model_name.human%>: <%= key.carrier.corporation_name %> </li>
+    <li><%=Deadline.model_name.human%>: <%= value.days %> dias </li>
+    <% if @distance <= key.minimal_distance %>
+       <li><%=Price.model_name.human%>: <%= (key.minimal_price) %> Reais </li>
+    <% else%>
+       <li><%=Price.model_name.human%>: <%= (key.price_per_km * @distance) %> Reais  </li>
+    <% end %>
+    </ul>
+  <%end%>
+<% end %>
+
