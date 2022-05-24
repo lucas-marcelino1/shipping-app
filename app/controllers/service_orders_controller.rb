@@ -51,7 +51,11 @@ class ServiceOrdersController < ApplicationController
   def search
     @code = params["query"]
     @s = ServiceOrder.find_by(order_code: @code)
-    @route_update = @s.route_update
+    if @s.present? 
+      @route_update = @s.route_update
+    else
+      redirect_to(root_path, notice: 'Encomenda não encontrada. Verifique o código!')
+    end
   end
 
 end
