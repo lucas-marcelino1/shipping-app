@@ -43,9 +43,9 @@ describe 'Usuário de transportadora' do
     click_on('Ordens de Serviço')
     click_on('Atualizar rota')
     fill_in('Hora', with: '05:05')
-    fill_in('Dia', with: '05-25-22')
+    fill_in('Dia', with: '05-05-22')
     fill_in('Local', with: 'Curitiba')
-    click_on('Atualizar Rota')
+    click_on('Salvar')
 
     expect(page).to have_content('Rota atualizada com sucesso!')
   end
@@ -69,7 +69,7 @@ describe 'Usuário de transportadora' do
     fill_in('Hora', with: '05:05 PM')
     fill_in('Dia', with: '05-25-22')
     fill_in('Local', with: 'Bairro 72')
-    click_on('Atualizar Rota')
+    click_on('Salvar')
     click_on('Pacote Entregue: Finalizar Encomenda')
     
     expect(page).to have_content('A ordem de serviço foi finalizada!')

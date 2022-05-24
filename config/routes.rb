@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
   resources :route_updates, only: [:edit, :update] do
+    post :create, on: :member
     patch :to_finish, on: :member
   end
 end

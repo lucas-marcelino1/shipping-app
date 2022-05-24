@@ -1,16 +1,20 @@
 <h1>Busca de encomendas</h1>
 
 <h3> Encomenda #<%=@code%> encontrada.</h3>
+<p> Transportadora: <%=@s.carrier.description%> <br> Veículo: <%=@s.vehicle.license_plate %> | <%=@s.vehicle.brand %></p>
+<h4> Últimas atualizações </h4>
+<% @route_updates.order(:id).reverse.each do |route_update|  %>
   <dl>
-    <dt>Última atualização:</dt>
-    <dd><%=I18n.localize(@route_update.day)%></dd>
+    <dt><%=RouteUpdate.human_attribute_name(:day)%>:</dt>
+    <dd><%=I18n.localize(route_update.day)%></dd>
 
     <dt><%=RouteUpdate.human_attribute_name(:hour)%>:</dt>
-    <dd><%=@route_update.set_hour%></dd>
+    <dd><%=route_update.set_hour%></dd>
 
     <dt><%=RouteUpdate.human_attribute_name(:local)%>:</dt>
-    <dd><%=@route_update.local%></dd>
+    <dd><%=route_update.local%></dd>
 
     <dt>Veículo:</dt>
-    <dd><%=@route_update.service_order.vehicle.license_plate%> - <%=@route_update.service_order.vehicle.brand%> </dd>
+    <dd><%=route_update.service_order.vehicle.license_plate%> - <%=route_update.service_order.vehicle.brand%> </dd>
   <dl>
+<% end %>

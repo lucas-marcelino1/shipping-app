@@ -1,5 +1,13 @@
 <h1> Atualizar Rota da OS: <%= @route_update.service_order.order_code %> </h1>
 
+<% if @route_update.errors.any? %>
+  <ul>
+    <% @route_update.errors.full_messages.each do |m| %>
+      <li> <%= m %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div>
   <% if @route_update.day.present? && @route_update.set_hour.present? && @route_update.local.present?%>
     <h2> Última atualização </h2>
@@ -20,11 +28,11 @@
 <% if @route_update.service_order.accepted? %>
   <p> Obs: Para habilitar a opção de finalizar encomenda, digite na opção 'Local' exatamente <br>como consta o endereço de entrega da ordem de serviço </p>
   <div>
-    <%= form_with(model: @route_update) do |f| %>
-      <%= f.label :day %>
+    <%= form_with(url: route_update_path, method: :post) do |f| %>
+      <%= f.label :day, 'Dia' %>
       <%= f.date_field :day %> <br>
 
-      <%= f.label :hour %>
+      <%= f.label :hour, 'Hora' %>
       <%= f.time_field :hour %> <br>
 
       <%= f.label :local %>

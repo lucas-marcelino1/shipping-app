@@ -20,15 +20,18 @@ describe 'Usuário procura o status da encomenda' do
     fill_in('Hora', with: '05:05')
     fill_in('Dia', with: '05-05-2022')
     fill_in('Local', with: 'Curitiba')
-    click_on('Atualizar Rota')
+    click_on('Salvar')
     click_on('Sair')
     fill_in('Buscar encomenda', with:'ABCDEFGHJK15236')
     click_on('Buscar')
 
     expect(page).to have_content("Encomenda #ABCDEFGHJK15236 encontrada")
-    expect(page).to have_content("Última atualização: 05/05/2022")
+    expect(page).to have_content("Transportadora: Reunidas Brasil LTDA - 12.345.678/1000-10")
+    expect(page).to have_content("Veículo: A5D534C4 - Fiat")
+    expect(page).to have_content("Últimas atualizações")
+    expect(page).to have_content("Dia: 05/05/2022")
     expect(page).to have_content("Hora: 05:05")
     expect(page).to have_content("Local: Curitiba")
-    expect(page).to have_content("Veículo: A5D534C4 - Fiat")
+    
   end
 end

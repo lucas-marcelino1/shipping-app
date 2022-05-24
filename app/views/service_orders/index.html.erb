@@ -13,7 +13,7 @@
 <% @service_orders.accepted.each do |s| %>
   
   <li> <%= link_to s.order_code, service_order_path(s) %> </li>
-   <%= button_to 'Atualizar rota', edit_route_update_path(s.route_update.id), method: :get %>
+   <%= button_to 'Atualizar rota', edit_route_update_path(s.route_updates.last.id), method: :get %>
 <% end %>
 </ul>
 
