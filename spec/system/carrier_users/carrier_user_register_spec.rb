@@ -6,7 +6,7 @@ describe 'Usuário de transportadora se cadastra' do
       email_domain: 'reunidas.com', address: 'Rua São Paulo, 6454 - Massaranduba/SC')
 
     visit(root_path)
-    click_on('Acesso transportadora')
+    click_on('Transportadora')
     click_on('Se inscrever')
     fill_in('Nome', with: 'Lucas')
     fill_in('E-mail', with: 'lucas@reunidas.com')
@@ -21,7 +21,7 @@ describe 'Usuário de transportadora se cadastra' do
   it 'com domínio inexistente e falha' do
    
     visit(root_path)
-    click_on('Acesso transportadora')
+    click_on('Transportadora')
     click_on('Se inscrever')
     fill_in('Nome', with: 'Lucas')
     fill_in('E-mail', with: 'lucas@reunidas.com')

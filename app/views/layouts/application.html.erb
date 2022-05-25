@@ -17,18 +17,19 @@
     <div>
       <% if carrier_user_signed_in? %>
         <%= button_to 'Sair', destroy_carrier_user_session_path, method: :delete %> <br>
-        <p>Logado como:</p>
+        <p>Sessão atual:</p>
         <p><%= current_carrier_user.name %> - <%= current_carrier_user.carrier.corporation_name %></p>
       <% elsif admin_signed_in? %>
         <%= button_to 'Sair', destroy_admin_session_path, method: :delete %>
-        <p>Logado como:</p>
+        <p>Sessão atual:</p>
         <p><%= current_admin.name %> - Administrador</p> 
         <%= link_to 'Registrar transportadora', new_carrier_path %> <br>
         <%= link_to 'Cadastrar ordem de serviço', new_service_order_path %> <br>
 
       <% else %>
-        <%= button_to 'Acesso transportadora', new_carrier_user_session_path, method: :get %>
-        <%= button_to 'Acesso administrador', new_admin_session_path, method: :get %>
+      <p> Acessar como:
+        <%= button_to 'Transportadora', new_carrier_user_session_path, method: :get %>
+        <%= button_to 'Administrador', new_admin_session_path, method: :get %> </p>
       <% end %>
     </div>
 

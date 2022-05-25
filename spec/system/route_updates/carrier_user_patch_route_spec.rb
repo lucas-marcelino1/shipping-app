@@ -43,7 +43,7 @@ describe 'Usuário de transportadora' do
     click_on('Ordens de Serviço')
     click_on('Atualizar rota')
     fill_in('Hora', with: '05:05')
-    fill_in('Dia', with: '05-05-22')
+    fill_in('Dia', with: 1.day.from_now)
     fill_in('Local', with: 'Curitiba')
     click_on('Salvar')
 
@@ -67,7 +67,7 @@ describe 'Usuário de transportadora' do
     click_on('Ordens de Serviço')
     click_on('Atualizar rota')
     fill_in('Hora', with: '05:05 PM')
-    fill_in('Dia', with: '05-25-22')
+    fill_in('Dia', with: 1.day.from_now)
     fill_in('Local', with: 'Bairro 72')
     click_on('Salvar')
     click_on('Pacote Entregue: Finalizar Encomenda')

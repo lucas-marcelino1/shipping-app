@@ -4,7 +4,7 @@ describe 'Usuário registra administrador' do
   it 'com sucesso' do
 
     visit(root_path)
-    click_on('Acesso administrador')
+    click_on('Administrador')
     click_on('Se inscrever')
     fill_in('E-mail', with: 'newadmin@sistemadefrete.com.br')
     fill_in('Senha', with: '123456')
@@ -18,7 +18,7 @@ describe 'Usuário registra administrador' do
   it 'com e-mail corporativo inválido' do
 
     visit(root_path)
-    click_on('Acesso administrador')
+    click_on('Administrador')
     click_on('Se inscrever')
     fill_in('E-mail', with: 'newadmin@fretedetransportadoras.com.br')
     fill_in('Senha', with: '123456')

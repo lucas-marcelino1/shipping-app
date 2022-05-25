@@ -77,7 +77,7 @@
 
   <%else%>
     <%= form_with(url: search_service_orders_path, method: :get) do |f| %>
-      <%= f.label :query, 'Buscar encomenda'%>
+      <%= f.label :query, 'Buscar encomenda'%> <br>
       <%= f.text_field :query %>
       <%= f.submit 'Buscar' %>
     <% end %>
