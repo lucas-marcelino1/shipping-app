@@ -29,4 +29,16 @@ class CarriersController < ApplicationController
     end
   end
 
+  def to_able
+    @carrier = Carrier.find(params[:id])
+    @carrier.able!
+    redirect_to(root_path, notice: 'A transportadora foi ativada com sucesso!')
+  end
+
+  def to_disable
+    @carrier = Carrier.find(params[:id])
+    @carrier.disable!
+    redirect_to(root_path, notice: 'A transportadora foi desativada com sucesso!')
+  end
+
 end

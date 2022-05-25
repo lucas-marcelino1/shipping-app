@@ -29,10 +29,13 @@ class PricesController < ApplicationController
     @prices = Price.where("initial_volume <= ? AND final_volume >= ? AND initial_weight <= ? AND final_weight >= ?",
     @volume, @volume, @weight, @weight)
     @prices_and_deadlines = {}
+
     @prices.each do |p|
-      @deadline = Deadline.find_by("initial_distance <= ? AND final_distance >= ? AND carrier_id = ?", @distance, @distance, p.carrier_id)
-      if @deadline.present?
-        @prices_and_deadlines[p] = @deadline
+      if p.carrier.able?
+        @deadline = Deadline.find_by("initial_distance <= ? AND final_distance >= ? AND carrier_id = ?", @distance, @distance, p.carrier_id)
+        if @deadline.present?
+          @prices_and_deadlines[p] = @deadline
+        end
       end
     end
     

@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :carrier_users
   root "home#index"
-  resources :carriers, only: [:new, :create, :edit, :update]
+  resources :carriers, only: [:new, :create, :edit, :update] do
+    patch :to_able, on: :member
+    patch :to_disable, on: :member
+  end
   resources :deadlines, only: [:new, :create, :edit, :update, :index]
   resources :vehicles, only: [:index, :new, :create, :edit, :update]
   resources :prices, only: [:index, :new, :create, :edit, :update] do 

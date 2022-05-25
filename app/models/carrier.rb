@@ -1,4 +1,5 @@
 class Carrier < ApplicationRecord
+  enum status: {able: 0, disable: 5}
   validates :corporation_name, :brand_name, :registration_number, :email_domain, presence: true
   validates :registration_number, uniqueness: true
   validates :email_domain, uniqueness: true

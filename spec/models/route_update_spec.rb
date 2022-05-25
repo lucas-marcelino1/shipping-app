@@ -21,7 +21,7 @@ RSpec.describe RouteUpdate, type: :model do
       expect(@r.errors.full_messages).to include('Hora não pode ficar em branco')
     end
 
-    it 'verifica se a mensagem de erro de data não pode ser anterior à agora está inclusa' do
+    it 'verifica se a mensagem de erro de data não poder ser anterior à hoje está inclusa' do
       @r = RouteUpdate.new(day: 1.day.ago)
       @r.valid?
       expect(@r.errors.full_messages).to include('Dia não pode ser anterior a hoje')
