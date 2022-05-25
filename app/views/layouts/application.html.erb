@@ -25,6 +25,7 @@
         <p><%= current_admin.name %> - Administrador</p> 
         <%= link_to 'Registrar transportadora', new_carrier_path %> <br>
         <%= link_to 'Cadastrar ordem de serviço', new_service_order_path %> <br>
+        <%= link_to 'Histórico de pré-orçamentos', price_log_searchs_path%>
 
       <% else %>
       <p> Acessar como:

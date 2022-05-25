@@ -1,0 +1,15 @@
+pt-BR:
+  activerecord:
+    models:
+      price_log_search: 'Histórico de busca de orçamento'
+    attributes:
+      price_log_search:
+        volume: "Volume"
+        price: "Preço"
+        weight: "Peso"
+        carrier: "Transportadora"
+        distance: "Distância"
+        deadline_days: "Prazo"
+        carrier_id: "Transportadora"
+        created_at: "Pré orçamento realizado em"
+        

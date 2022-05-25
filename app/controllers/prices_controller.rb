@@ -35,6 +35,13 @@ class PricesController < ApplicationController
         @deadline = Deadline.find_by("initial_distance <= ? AND final_distance >= ? AND carrier_id = ?", @distance, @distance, p.carrier_id)
         if @deadline.present?
           @prices_and_deadlines[p] = @deadline
+          if p.minimal_distance >= @distance
+            @calculated_price = p.minimal_price
+          else
+            @calculated_price = p.price_per_km * @distance
+          end 
+          @p = PriceLogSearch.new(volume: @volume, weight: @weight, distance: @distance, price: @calculated_price, deadline_days: @deadline.days, carrier: p.carrier)
+          @p.save!
         end
       end
     end

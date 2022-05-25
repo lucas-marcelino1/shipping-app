@@ -20,4 +20,5 @@ Rails.application.routes.draw do
     post :create, on: :member
     patch :to_finish, on: :member
   end
+  resources :price_log_searchs, only: [:index]
 end

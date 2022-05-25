@@ -1,0 +1,14 @@
+<h1> Histórico de pré-orçamentos </h1>
+
+
+<% @prices_log.each do |price_log| %>
+  <ul>
+    <li> <%= PriceLogSearch.human_attribute_name(:carrier)%>: <%= price_log.carrier.description %></li>
+    <li> <%= PriceLogSearch.human_attribute_name(:deadline_days)%>: <%= price_log.deadline_days %> dias</li>
+    <li> <%= PriceLogSearch.human_attribute_name(:volume)%>: <%= price_log.volume %> m³</li>
+    <li> <%= PriceLogSearch.human_attribute_name(:weight)%>: <%= price_log.weight%> g</li>
+    <li> <%= PriceLogSearch.human_attribute_name(:distance)%>: <%= price_log.distance %> km</li>
+    <li> <%= PriceLogSearch.human_attribute_name(:price)%>: <%= number_to_currency(price_log.price) %></li>
+    <li> <%= PriceLogSearch.human_attribute_name(:created_at)%>: <%= l(price_log.created_at, format: :long) %></li>
+  </ul>
+<%end%>
