@@ -1,4 +1,4 @@
-<h1> <%= ServiceOrder.model_name %>: <%= @os.order_code %> </h1>
+<h1> <%= ServiceOrder.model_name.human %>: <%= @os.order_code %> </h1>
 
 <div>
   <%=ServiceOrder.human_attribute_name(:item_code)%>: <%= @os.item_code %> <br>
@@ -33,4 +33,10 @@
 
 <%elsif @os.accepted?%>
   <p>Ordem de serviço aprovada!</p>
+
+<%elsif @os.rejected?%>
+  <p>Ordem de serviço rejeitada!</p>
+
+<%elsif @os.finished?%>
+  <p>Ordem de serviço finalizada: encomenda entregue!</p>
 <%end%>

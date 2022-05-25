@@ -14,7 +14,7 @@ describe 'Usuário visita os preços da sua transportadora' do
   
     expect(page).to have_content('Preços cadastrados')
     expect(page).to have_content('Volumes de 0.001 (m³) até 0.5 (m³)')
-    expect(page).to have_content('Até 2.0 km o valor é R$ 5.0')
+    expect(page).to have_content('Até 2.0 km o valor é R$ 5,00')
 
   end
 end

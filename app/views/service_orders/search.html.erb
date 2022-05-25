@@ -1,20 +1,37 @@
 <h1>Busca de encomendas</h1>
 
 <h3> Encomenda #<%=@code%> encontrada.</h3>
-<p> Transportadora: <%=@s.carrier.description%> <br> Veículo: <%=@s.vehicle.license_plate %> | <%=@s.vehicle.brand %></p>
-<h4> Últimas atualizações </h4>
-<% @route_updates.order(:id).reverse.each do |route_update|  %>
+<p> <%= Carrier.model_name.human %>: <%=@s.carrier.description%> <br> <%=I18n.t(:vehicle)%>: <%=@s.vehicle.license_plate %> | <%=@s.vehicle.brand %></p>
+
+<% if @s.finished? %>
+  <h3>Encomenda entregue.</h3>
   <dl>
     <dt><%=RouteUpdate.human_attribute_name(:day)%>:</dt>
-    <dd><%=I18n.localize(route_update.day)%></dd>
+      <dd><%=I18n.localize(@route_updates.last.day)%></dd>
 
-    <dt><%=RouteUpdate.human_attribute_name(:hour)%>:</dt>
-    <dd><%=route_update.set_hour%></dd>
+      <dt><%=RouteUpdate.human_attribute_name(:hour)%>:</dt>
+      <dd><%=@route_updates.last.set_hour%></dd>
 
-    <dt><%=RouteUpdate.human_attribute_name(:local)%>:</dt>
-    <dd><%=route_update.local%></dd>
+      <p><%=RouteUpdate.human_attribute_name(:local)%>: <%=@route_updates.last.local%> <br>
+      
+      <%=ServiceOrder.human_attribute_name(:recipient_name)%>: <%=@s.recipient_name%> <br>
 
-    <dt>Veículo:</dt>
-    <dd><%=route_update.service_order.vehicle.license_plate%> - <%=route_update.service_order.vehicle.brand%> </dd>
-  <dl>
-<% end %>
+      <%=ServiceOrder.human_attribute_name(:item_code)%>: <%=@s.item_code%></p>
+  </dl>
+
+  <% else%>
+  <h4> Últimas atualizações </h4>
+  <% @route_updates.order(:id).reverse.each do |route_update|  %>
+    <dl>
+      <dt><%=RouteUpdate.human_attribute_name(:day)%>:</dt>
+      <dd><%=I18n.localize(route_update.day)%></dd>
+
+      <dt><%=RouteUpdate.human_attribute_name(:hour)%>:</dt>
+      <dd><%=route_update.set_hour%></dd>
+
+      <dt><%=RouteUpdate.human_attribute_name(:local)%>:</dt>
+      <dd><%=route_update.local%></dd>
+
+    <dl>
+  <% end %>
+<%end%>

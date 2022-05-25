@@ -1,6 +1,6 @@
 <h1> Cadastrar preço </h1>
 
-<p> O volume e o peso devem ser cadastrados em períodos</p>
+<p> O volume e o peso devem ser cadastrados em períodos.</p>
 
 <div>
 <% if @price.errors.any? %>
@@ -15,28 +15,18 @@
 <%= form_with(model:@price) do |f| %>
 
   <div>
-    <%= f.label :initial_volume %>
-    <%= f.text_field :initial_volume %>
+    <%= f.label :initial_volume %>  <%= f.text_field :initial_volume %> <%= f.label :final_volume %>  <%= f.text_field :final_volume %>
   </div>
 
-  <div>
-    <%= f.label :final_volume %>
-    <%= f.text_field :final_volume %>
-  </div>
 
   <div>
-    <%= f.label :initial_weight %>
-    <%= f.text_field :initial_weight %>
+    <%= f.label :initial_weight %> <%= f.text_field :initial_weight %>  <%= f.label :final_weight %> <%= f.text_field :final_weight %>
   </div>
 
-  <div>
-    <%= f.label :final_weight %>
-    <%= f.text_field :final_weight %>
-  </div>
 
   <div>
     <%= f.label :price_per_km %>
-    <%= f.text_field :price_per_km %>
+    <%= f.text_field :price_per_km %> Reais
   </div>
 
   <div>

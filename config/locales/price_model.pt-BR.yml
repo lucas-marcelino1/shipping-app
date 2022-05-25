@@ -4,12 +4,13 @@ pt-BR:
       price: 'Preço'
     attributes:
       price:
-        initial_weight: "Peso inicial (kg)"
-        final_weight: "Peso final (kg)"
-        initial_volume: "Volume inicial (m³)"
-        final_volume: "Volume final (m³)"
-        price_per_km: "Preço por kilômetro (R$)"
+        initial_weight: "De [peso inicial (kg)]"
+        final_weight: "até [peso final (kg)]"
+        initial_volume: "De [volume inicial (m³)]"
+        final_volume: "até [volume final (m³)]"
+        price_per_km: "O preço (R$) por kilômetro é"
         minimal_price: "Preço mínimo (R$)"
-        minimal_distance: "Distância mínima (km)"
+        minimal_distance: "distância mínima (km)"
         carrier_id: "Transportadora"
+        carrier: "Transportadora"
         

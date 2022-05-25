@@ -27,7 +27,7 @@ describe 'Usuário procura o status da encomenda' do
 
     expect(page).to have_content("Encomenda #ABCDEFGHJK15236 encontrada")
     expect(page).to have_content("Transportadora: Reunidas Brasil LTDA - 12.345.678/1000-10")
-    expect(page).to have_content("Veículo: A5D534C4 - Fiat")
+    expect(page).to have_content("Veículo: A5D534C4 | Fiat")
     expect(page).to have_content("Últimas atualizações")
     expect(page).to have_content("Dia:")
     expect(page).to have_content("Hora: 05:05")
