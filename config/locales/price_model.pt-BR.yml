@@ -4,8 +4,8 @@ pt-BR:
       price: 'Preço'
     attributes:
       price:
-        initial_weight: "De [peso inicial (kg)]"
-        final_weight: "até [peso final (kg)]"
+        initial_weight: "De [peso inicial (g)]"
+        final_weight: "até [peso final (g)]"
         initial_volume: "De [volume inicial (m³)]"
         final_volume: "até [volume final (m³)]"
         price_per_km: "O preço (R$) por kilômetro é"

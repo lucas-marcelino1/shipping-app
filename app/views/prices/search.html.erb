@@ -4,9 +4,9 @@
     <li><%=Carrier.model_name.human%>: <%= key.carrier.corporation_name %> </li>
     <li><%=Deadline.model_name.human%>: <%= value.days %> dias </li>
     <% if @distance <= key.minimal_distance %>
-       <li><%=Price.model_name.human%>: <%= (key.minimal_price) %> Reais </li>
+       <li><%=Price.model_name.human%>: <%= number_to_currency(key.minimal_price) %> </li>
     <% else%>
-       <li><%=Price.model_name.human%>: <%= (key.price_per_km * @distance) %> Reais  </li>
+       <li><%=Price.model_name.human%>: <%= number_to_currency(key.price_per_km * @distance) %> </li>
     <% end %>
     </ul>
   <%end%>

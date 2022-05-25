@@ -5,7 +5,7 @@
 <% @prices.each do |p| %> <br>
 
 Volumes de <%= p.initial_volume %> (m³) até <%= p.final_volume %> (m³) <br>
-Pesos de <%= p.initial_weight %> (kg) até <%= p.final_weight %> (kg) <br>
+Pesos de <%= p.initial_weight %> (g) até <%= p.final_weight %> (g) <br>
 Preço por kilômetro: <%= number_to_currency(p.price_per_km) %> <br>
 Até <%= p.minimal_distance %> km o valor é <%= number_to_currency(p.minimal_price) %> <br>
 
