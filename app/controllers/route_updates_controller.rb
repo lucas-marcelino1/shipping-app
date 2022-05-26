@@ -1,12 +1,12 @@
 class RouteUpdatesController < ApplicationController
+  before_action :authenticate_carrier_user!
+  before_action :set_route_update
 
   def edit
-    @route_update = RouteUpdate.find(params[:id])
     @service_order = @route_update.service_order
   end
 
   def create
-    @route_update = RouteUpdate.find(params[:id])
     @service_order = @route_update.service_order
     @route_update = RouteUpdate.new(service_order: @service_order, local: params[:local], hour: params[:hour], day: params[:day])
     if @route_update.save
@@ -19,10 +19,15 @@ class RouteUpdatesController < ApplicationController
   end
 
   def to_finish
-    @route_update = RouteUpdate.find(params[:id])
     @route_update.service_order.finished!
     @route_update.local = "Entregue ao destinatário"
     redirect_to(service_orders_path, notice: 'A ordem de serviço foi finalizada!')
+  end
+
+  private 
+
+  def set_route_update
+    @route_update = RouteUpdate.find(params[:id])
   end
   
 end

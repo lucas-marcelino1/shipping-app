@@ -1,7 +1,7 @@
 <h1> Histórico de pré-orçamentos </h1>
 
 
-<% @prices_log.each do |price_log| %>
+<% @prices_log.order(:id).reverse.each do |price_log| %>
   <ul>
     <li> <%= PriceLogSearch.human_attribute_name(:carrier)%>: <%= price_log.carrier.description %></li>
     <li> <%= PriceLogSearch.human_attribute_name(:deadline_days)%>: <%= price_log.deadline_days %> dias</li>

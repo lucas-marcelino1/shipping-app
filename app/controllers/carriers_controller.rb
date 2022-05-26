@@ -1,5 +1,6 @@
 class CarriersController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_carrier, only: [:edit, :update, :to_able, :to_disable]
   
   def new
     @carrier = Carrier.new()
@@ -16,11 +17,9 @@ class CarriersController < ApplicationController
   end
 
   def edit
-    @carrier = Carrier.find(params[:id])
   end
 
   def update
-    @carrier = Carrier.find(params[:id])
     if @carrier.update(params.require(:carrier).permit(:corporation_name, :brand_name, :registration_number, :email_domain, :address))
       redirect_to(root_path, notice: 'Transportadora atualizada com sucesso')
     else
@@ -30,15 +29,19 @@ class CarriersController < ApplicationController
   end
 
   def to_able
-    @carrier = Carrier.find(params[:id])
     @carrier.able!
     redirect_to(root_path, notice: 'A transportadora foi ativada com sucesso!')
   end
 
   def to_disable
-    @carrier = Carrier.find(params[:id])
     @carrier.disable!
     redirect_to(root_path, notice: 'A transportadora foi desativada com sucesso!')
+  end
+
+  private
+
+  def set_carrier
+    @carrier = Carrier.find(params[:id])
   end
 
 end

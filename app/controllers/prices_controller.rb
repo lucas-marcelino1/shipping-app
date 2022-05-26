@@ -40,8 +40,8 @@ class PricesController < ApplicationController
           else
             @calculated_price = p.price_per_km * @distance
           end 
-          @p = PriceLogSearch.new(volume: @volume, weight: @weight, distance: @distance, price: @calculated_price, deadline_days: @deadline.days, carrier: p.carrier)
-          @p.save!
+          @price_log = PriceLogSearch.new(volume: @volume, weight: @weight, distance: @distance, price: @calculated_price, deadline_days: @deadline.days, carrier: p.carrier)
+          @price_log.save!
         end
       end
     end

@@ -13,5 +13,6 @@ pt-BR:
         recipient_CPF: "CPF do destinatário"
         carrier_id: 'Transportadora'
         vehicle_id: 'Veículo'
+        vehicle: 'Veículo'
         order_code: 'Código da Ordem de Serviço'
         
