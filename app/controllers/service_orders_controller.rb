@@ -24,6 +24,9 @@ class ServiceOrdersController < ApplicationController
   end
 
   def show
+    if @service_order.carrier != current_carrier_user.carrier
+      redirect_to(root_path, alert: 'Não foi possível exibir a ordem de serviço!')
+    end
     @vehicles = current_carrier_user.carrier.vehicles
   end
 

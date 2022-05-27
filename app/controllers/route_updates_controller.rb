@@ -4,6 +4,9 @@ class RouteUpdatesController < ApplicationController
 
   def edit
     @service_order = @route_update.service_order
+    if @service_order.carrier != current_carrier_user.carrier
+      redirect_to(root_path, alert: 'Não foi possível acessar a página.')
+    end
   end
 
   def create

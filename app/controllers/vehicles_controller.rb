@@ -23,6 +23,9 @@ class VehiclesController < ApplicationController
 
   def edit
     @vehicle = Vehicle.find(params[:id])
+    if @vehicle.carrier != current_carrier_user.carrier
+      redirect_to(root_path, alert: 'Não foi possível acessar a edição do veículo')
+    end
   end
 
   def update
