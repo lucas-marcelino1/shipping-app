@@ -1,3 +1,4 @@
+<div class="margin">
 <% @prices_and_deadlines.each_pair do |key, value| %>
   <% if key.present? && value.present?%>
     <ul>
@@ -9,6 +10,6 @@
        <li><%=Price.model_name.human%>: <%= number_to_currency(key.price_per_km * @distance) %> </li>
     <% end %>
     </ul>
-  <%end%>
+  <%end%> <br>
 <% end %>
-
+</div>
