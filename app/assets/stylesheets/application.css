@@ -13,3 +13,269 @@
  *= require_tree .
  *= require_self
  */
+
+ * { margin: 0;
+    padding: 0;
+}
+
+body {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-color: lightgoldenrodyellow;
+}
+
+.margin { margin: 10px;
+  
+}
+
+header {
+  background: linear-gradient(rgb(243, 225, 127), lightgoldenrodyellow);
+  justify-content: left;
+  
+}
+
+footer {
+  background: linear-gradient(lightgoldenrodyellow, rgb(243, 225, 127));
+  justify-content: center;
+
+}
+
+header,
+footer {
+  
+  align-items: center;
+  display: flex;
+  height: 12vh;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  
+  
+}
+
+.header {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  text-align: left;
+  text-indent: 18px;
+  text-shadow: 2px 2px 5px grey;
+}
+
+.header_home {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  text-align: left;
+  text-indent: 18px;
+  text-shadow: 2px 2px 5px grey;
+}
+
+.admin_options {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  text-align: left;
+  text-indent: 18px;
+  text-shadow: 2px 2px 5px grey;
+}
+
+.center {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 100px;
+  margin-left: 100px;
+  text-align: center;
+  align-items: center;
+}
+
+.button_update {
+  background-color: #33b1ca;
+  border-radius: 25px;
+  color: rgb(0, 0, 0);
+  padding: 15px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+}
+
+.button_update_route {
+  background-color: #33b1ca;
+  border-radius: 25px;
+  color: rgb(0, 0, 0);
+  padding: 7px 7px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 11px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+}
+
+.button_access {
+  background-color: #4CAF50;
+  border-radius: 25px;
+  color: white;
+  padding: 15px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button_reject {
+  background-color: #dc4949;
+  border-radius: 25px;
+  color: white;
+  padding: 15px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button_able {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button_disable {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 15px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button_access_login {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.exit_button {
+  background-color: lightcoral;
+  border: none;
+  color: white;
+  padding: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.button_search {
+  background-color: goldenrod;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  
+}
+
+.search_bar {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+a:link, a:visited {
+  background-color: goldenrod;
+  color: white;
+  padding: 5px 6px;
+  text-align: center;
+  text-decoration: none;
+
+}
+
+a:hover, a:active {
+  background-color: rgb(255, 207, 61);
+}
+
+.message {
+  align-items: center;
+  text-align: center;
+  color: rgb(0, 26, 255);
+}
+
+.lefter_user {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  text-align: left;
+  text-indent: 18px;
+}
+
+dl {
+  margin: 0;
+  padding: 0;
+  
+  }
+dt {
+  font-size: 1.5em;
+  font-family: serif;
+  font-weight: bold;
+  margin: .5em 0 0 0;
+  padding: 0;
+  }
+dd {
+  display: list-item;
+  list-style:disc;
+  list-style-image: url(bullet.gif);
+  margin: 0 0 0 2em;
+  padding: .5em;
+  }
+
+.search_price {
+  font-size: 20px;
+  text-align: center;
+  text-transform: uppercase;
+
+}
+
+.listing_vehicles{
+  padding: 5px 0px;
+  font-size: 16px;
+  
+}
+
+.warning {
+  color: red;
+  font-style: italic;
+}
+

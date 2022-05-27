@@ -19,7 +19,7 @@ describe 'Usuário registra veículo de transportadora' do
     click_on('Criar Veículo')
 
     expect(page).to have_content('Veículo cadastrado com sucesso')
-    expect(page).to have_content('Placa: A5D534C4')
+    expect(page).to have_content('A5D534C4')
     expect(page).to have_content('Marca: Volvo')
     expect(page).to have_content('Modelo: CAM-3504')
     expect(page).to have_content('Ano: 1996')

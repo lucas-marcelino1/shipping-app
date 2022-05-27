@@ -1,31 +1,33 @@
-<h1> Cadastrar novo prazo de entrega </h1>
+<div class="margin">
+  <h1> Cadastrar novo prazo de entrega </h1>
 
-<div>
-<% if @deadline.errors.any? %>
-  <ul>
-  <% @deadline.errors.full_messages.each do |msg| %>
-    <li> <%= msg %>. </li>
+  <div class="warning">
+  <% if @deadline.errors.any? %>
+    <ul>
+    <% @deadline.errors.full_messages.each do |msg| %>
+      <li> <%= msg %>. </li>
+    <% end %>
+    </ul>
   <% end %>
-  </ul>
-<% end %>
-</div>
-
-<div>
-<%= form_with(model:@deadline) do |f| %>
-
-  <div>
-    <%= f.label :initial_distance %> <%= f.number_field :initial_distance %>km até <%= f.label :final_distance %> <%= f.number_field :final_distance %>km
-    
   </div>
 
   <div>
-    <%= f.label :days %>
-    <%= f.text_field :days %>
-  </div>
+  <%= form_with(model:@deadline) do |f| %>
 
-  <div>
-    <%= f.submit%>
-  </div>
+    <div>
+      <%= f.label :initial_distance %> <%= f.number_field :initial_distance %>km até <%= f.label :final_distance %> <%= f.number_field :final_distance %>km
 
-<% end %>
+    </div>
+
+    <div>
+      <%= f.label :days %>
+      <%= f.text_field :days %>
+    </div>
+
+    <div>
+      <%= f.submit class: 'button_access'%>
+    </div>
+
+  <% end %>
+  </div>
 </div>

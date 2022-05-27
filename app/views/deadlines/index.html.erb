@@ -1,11 +1,13 @@
-<h2> Prazos de entrega (<%=@carrier.corporation_name%>) </h2>
+<div class="margin">
+  <h2> Prazos de entrega (<%=@carrier.corporation_name%>) </h2> <br>
 
-<p> <%= link_to 'Cadastrar prazo de entrega', new_deadline_path %> </p>
+  <p> <%= link_to 'Cadastrar prazo de entrega', new_deadline_path %> </p> <br> <br>
 
-<ul>
-<% @deadlines.each do |d| %>
-  <div>
-  <li>De <%= d.initial_distance %>km até <%= d.final_distance %>km o prazo de entrega é <%= d.days %> dias úteis </li>
-  </div>
-<% end %>
-</ul>
+  <ul>
+  <% @deadlines.each do |d| %>
+    <div>
+    <li>De <%= d.initial_distance %>km até <%= d.final_distance %>km o prazo de entrega é <%= d.days %> dias úteis </li>
+    </div>
+  <% end %>
+  </ul>
+</div>

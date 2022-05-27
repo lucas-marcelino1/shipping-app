@@ -1,44 +1,48 @@
-<h1> Cadastrar novo veículo </h1>
+<div class="margin">
 
-<div>
-<% if @vehicle.errors.any? %>
-  <ul>
-  <% @vehicle.errors.full_messages.each do |msg| %>
-    <li> <%= msg %>. </li>
+  <h1> Cadastrar novo veículo </h1> <br>
+
+  <div class="warning">
+  <% if @vehicle.errors.any? %>
+    <ul>
+    <% @vehicle.errors.full_messages.each do |msg| %>
+      <li> <%= msg %>. </li>
+    <% end %>
+    </ul>
   <% end %>
-  </ul>
-<% end %>
+  </div>
+
+  <br>
+  <%= form_with(model:@vehicle) do |f| %>
+
+    <div>
+      <%= f.label :license_plate %>
+      <%= f.text_field :license_plate %>
+    </div>
+
+    <div>
+      <%= f.label :brand %>
+      <%= f.text_field :brand %>
+    </div>
+
+    <div>
+      <%= f.label :model %>
+      <%= f.text_field :model %>
+    </div>
+
+    <div>
+      <%= f.label :year %>
+      <%= f.text_field :year %>
+    </div>
+
+    <div>
+      <%= f.label :maximum_charge %>
+      <%= f.text_field :maximum_charge %> kg
+    </div>
+
+    <div>
+      <%= f.submit class: 'button_access'%>
+    </div>
+
+  <% end %>
 </div>
-
-<%= form_with(model:@vehicle) do |f| %>
-
-  <div>
-    <%= f.label :license_plate %>
-    <%= f.text_field :license_plate %>
-  </div>
-
-  <div>
-    <%= f.label :brand %>
-    <%= f.text_field :brand %>
-  </div>
-
-  <div>
-    <%= f.label :model %>
-    <%= f.text_field :model %>
-  </div>
-
-  <div>
-    <%= f.label :year %>
-    <%= f.text_field :year %>
-  </div>
-
-  <div>
-    <%= f.label :maximum_charge %>
-    <%= f.text_field :maximum_charge %> kg
-  </div>
-
-  <div>
-    <%= f.submit%>
-  </div>
-
-<% end %>

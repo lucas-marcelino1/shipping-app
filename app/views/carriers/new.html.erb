@@ -1,44 +1,46 @@
-<h1> Cadastrar transportadora </h1>
+<div class="margin">  
+  <h1> Cadastrar transportadora </h1>
 
-<div>
-<% if @carrier.errors.any? %>
-  <ul>
-  <% @carrier.errors.full_messages.each do |msg| %>
-    <li> <%= msg %>. </li>
+  <div class="warning">
+  <% if @carrier.errors.any? %>
+    <ul>
+    <% @carrier.errors.full_messages.each do |msg| %>
+      <li> <%= msg %>. </li>
+    <% end %>
+    </ul>
   <% end %>
-  </ul>
-<% end %>
+  </div>
+
+  <%= form_with(model:@carrier) do |f| %>
+
+    <div>
+      <%= f.label :corporation_name %>
+      <%= f.text_field :corporation_name %>
+    </div>
+
+    <div>
+      <%= f.label :brand_name %>
+      <%= f.text_field :brand_name %>
+    </div>
+
+    <div>
+      <%= f.label :registration_number %>
+      <%= f.text_field :registration_number %>
+    </div>
+
+    <div>
+      <%= f.label :email_domain %>
+      <%= f.text_field :email_domain %>
+    </div>
+
+    <div>
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+    </div>
+
+    <div>
+      <%= f.submit class:'button_access'%>
+    </div>
+
+  <% end %>
 </div>
-
-<%= form_with(model:@carrier) do |f| %>
-
-  <div>
-    <%= f.label :corporation_name %>
-    <%= f.text_field :corporation_name %>
-  </div>
-
-  <div>
-    <%= f.label :brand_name %>
-    <%= f.text_field :brand_name %>
-  </div>
-
-  <div>
-    <%= f.label :registration_number %>
-    <%= f.text_field :registration_number %>
-  </div>
-
-  <div>
-    <%= f.label :email_domain %>
-    <%= f.text_field :email_domain %>
-  </div>
-
-  <div>
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </div>
-
-  <div>
-    <%= f.submit%>
-  </div>
-
-<% end %>

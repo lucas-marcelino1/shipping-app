@@ -1,45 +1,47 @@
-<h1> <%= ServiceOrder.model_name.human %>: <%= @service_order.order_code %> </h1>
-
-<div>
-  <%=ServiceOrder.human_attribute_name(:item_code)%>: <%= @service_order.item_code %> <br>
-  <%=ServiceOrder.human_attribute_name(:weight)%>: <%= @service_order.weight %> <br>
-  <%=ServiceOrder.human_attribute_name(:volume)%>: <%= @service_order.volume %> <br>
-  <%=ServiceOrder.human_attribute_name(:pickup_address)%>: <%= @service_order.pickup_address %> <br>
-  <%=ServiceOrder.human_attribute_name(:delivery_address)%>: <%= @service_order.delivery_address %> <br>
-  <%=ServiceOrder.human_attribute_name(:recipient_name)%>: <%= @service_order.recipient_name %> <br>
-  <%=ServiceOrder.human_attribute_name(:recipient_CPF)%>: <%= @service_order.recipient_CPF %> <br>
-  <%=ServiceOrder.human_attribute_name(:order_code)%>: <%= @service_order.order_code %> <br>
-  <% if @service_order.accepted? %>
-    <%=ServiceOrder.human_attribute_name(:vehicle)%>: <%= @service_order.vehicle.license_plate %> <br>
-  <%end %>
-</div>
-  
-<% if @service_order.pending? %>  
+<div class="margin">
+  <h1> <%= ServiceOrder.model_name.human %>: <%= @service_order.order_code %> </h1> <br>
 
   <div>
-    <%= form_for @service_order, url: {action: 'to_accept', method: :patch} do |f| %>
-      <%if @vehicles.any? %>
-        <%= f.label :vehicle_id %>
-        <%= f.collection_select :vehicle_id, @vehicles, :id, :license_plate%> <br>
-        <%= f.submit 'Aceitar Ordem de Serviço' %>
-      <% else %>
-        <p> Para aceitar a ordem de serviço, cadastre um veículo!</p>
+    <%=ServiceOrder.human_attribute_name(:item_code)%>: <%= @service_order.item_code %> <br>
+    <%=ServiceOrder.human_attribute_name(:weight)%>: <%= @service_order.weight %> <br>
+    <%=ServiceOrder.human_attribute_name(:volume)%>: <%= @service_order.volume %> <br>
+    <%=ServiceOrder.human_attribute_name(:pickup_address)%>: <%= @service_order.pickup_address %> <br>
+    <%=ServiceOrder.human_attribute_name(:delivery_address)%>: <%= @service_order.delivery_address %> <br>
+    <%=ServiceOrder.human_attribute_name(:recipient_name)%>: <%= @service_order.recipient_name %> <br>
+    <%=ServiceOrder.human_attribute_name(:recipient_CPF)%>: <%= @service_order.recipient_CPF %> <br>
+    <%=ServiceOrder.human_attribute_name(:order_code)%>: <%= @service_order.order_code %> <br>
+    <% if @service_order.accepted? %>
+      <%=ServiceOrder.human_attribute_name(:vehicle)%>: <%= @service_order.vehicle.license_plate %> <br>
+    <%end %>
+  </div>
+
+  <% if @service_order.pending? %>  
+
+    <div>
+      <%= form_for @service_order, url: {action: 'to_accept', method: :patch} do |f| %>
+        <%if @vehicles.any? %>
+          <%= f.label :vehicle_id %> 
+          <%= f.collection_select :vehicle_id, @vehicles, :id, :license_plate%> <br> <br>
+          <%= f.submit 'Aceitar Ordem de Serviço', class: 'button_access' %> 
+        <% else %>
+          <p> Para aceitar a ordem de serviço, cadastre um veículo!</p>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
 
-  <div>
-    <%= form_for @service_order, url: {action: 'to_reject', method: :patch} do |f| %>
-        <%= f.submit 'Rejeitar Ordem de Serviço'%>
-    <% end %>
-  </div>
+    <div>
+      <%= form_for @service_order, url: {action: 'to_reject', method: :patch} do |f| %>
+          <%= f.submit 'Rejeitar Ordem de Serviço', class: 'button_reject'%>
+      <% end %>
+    </div>
 
-<%elsif @service_order.accepted?%>
-  <p>Ordem de serviço aprovada!</p>
+  <%elsif @service_order.accepted?%>
+    <p>Ordem de serviço aprovada!</p>
 
-<%elsif @service_order.rejected?%>
-  <p>Ordem de serviço rejeitada!</p>
+  <%elsif @service_order.rejected?%>
+    <p>Ordem de serviço rejeitada!</p>
 
-<%elsif @service_order.finished?%>
-  <p>Ordem de serviço finalizada: encomenda entregue!</p>
-<%end%>
+  <%elsif @service_order.finished?%>
+    <p>Ordem de serviço finalizada: encomenda entregue!</p>
+  <%end%>
+</div>

@@ -1,4 +1,4 @@
-<h2>Forgot your password?</h2>
+<div class="center"> <h2>Esqueceu sua senha?</h2> <br>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "admins/shared/error_messages", resource: resource %>
@@ -8,9 +8,10 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <div>
+    <%= f.submit "Me envie instruções de recuperação de senha", :class => "button_access_login" %> <br> <br>
   </div>
 <% end %>
 
 <%= render "admins/shared/links" %>
+</div>

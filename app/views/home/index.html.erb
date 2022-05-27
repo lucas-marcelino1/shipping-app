@@ -1,104 +1,117 @@
+<% if carrier_user_signed_in? || admin_signed_in? %>
 
-<% if carrier_user_signed_in? %>
-<h1> Gestão da <%= Carrier.model_name.human %>: <%= @carrier.corporation_name %> </h1>
-  <%= link_to 'Nossa Frota de Veículos', vehicles_path %> ||
-  <%= link_to 'Nossos preços', prices_path %> ||
-  <%= link_to 'Nossos prazos de entrega', deadlines_path %> ||
-  <%= link_to 'Ordens de Serviço', service_orders_path %>
+  <div class="margin">
+    <% if carrier_user_signed_in? %>
+    <h1> Gestão da <%= Carrier.model_name.human %>: <%= @carrier.corporation_name %> </h1> <br>
+      <%= link_to 'Nossa Frota de Veículos', vehicles_path %> ||
+      <%= link_to 'Nossos preços', prices_path %> ||
+      <%= link_to 'Nossos prazos de entrega', deadlines_path %> ||
+      <%= link_to 'Ordens de Serviço', service_orders_path %> <br/> <br>
 
-  <h2> Minha transportadora </h2>
-    <dl>
-      <dt>Razão social: </dt>
-      <dd><%=@carrier.corporation_name%></dd>
-      <dt>Nome Fantasia: </dt>
-      <dd><%=@carrier.brand_name%></dd>
-      <dt>CNPJ: </dt>
-      <dd><%=@carrier.registration_number%></dd>
-      <dt>Domínio de e-mail: </dt>
-      <dd><%=@carrier.email_domain%></dd>
-      <dt>Endereço: </dt>
-      <dd><%=@carrier.address%></dd>
-      <dt>Veículos: </dt>
-      <% @carrier.vehicles.each do |v| %>
-        <dd> <%= link_to(v.license_plate, edit_vehicle_path(v.id)) %> </dd>
-      <% end %>
-    </dl>
-
-<% elsif admin_signed_in? %>
-
-  <h1> Gestão de transportadoras </h1>
-
-  <%= form_with(url: search_prices_path, method: :get) do |f| %>
-    <%= f.label 'Consultar pré-orçamento'%> <br>
-
-    <%= f.label :volume, 'Volume (m3)' %>
-    <%= f.text_field :volume %>
-
-    <%= f.label :weight, 'Peso (g)' %>
-    <%= f.text_field :weight %>
-
-    <%= f.label :distance, 'Distância (km)' %>
-    <%= f.text_field :distance %>
-
-    <%= f.submit 'Consultar' %>
-  <% end %>
-
-
-  <% if @carriers.any? %>
-    <h2> Transportadoras cadastradas </h2>
-
-    <% @carriers.each do |c| %>
-      <% if c.able? %>
+      <h2> Minha transportadora </h2>
         <dl>
-          <strong><dt>Razão social: </dt></strong>
-          <dd><%= link_to c.corporation_name, edit_carrier_path(c.id)%></dd>
-
+          <dt>Razão social: </dt>
+          <dd><%=@carrier.corporation_name%></dd>
           <dt>Nome Fantasia: </dt>
-          <dd><%=c.brand_name%></dd>
-
+          <dd><%=@carrier.brand_name%></dd>
           <dt>CNPJ: </dt>
-          <dd><%=c.registration_number%></dd>
-
+          <dd><%=@carrier.registration_number%></dd>
           <dt>Domínio de e-mail: </dt>
-          <dd><%=c.email_domain%></dd>
-
+          <dd><%=@carrier.email_domain%></dd>
           <dt>Endereço: </dt>
-          <dd><%=c.address%></dd>
-
+          <dd><%=@carrier.address%></dd>
           <dt>Veículos: </dt>
-          <% c.vehicles.each do |v| %>
-            <dd> <%= link_to(v.license_plate, edit_vehicle_path(v.id)) %> </dd> 
+          <% @carrier.vehicles.each do |v| %>
+            <dd> <%= link_to(v.license_plate, edit_vehicle_path(v.id)) %> </dd>
           <% end %>
-
-          <dt>Status: </dt>
-          <dd><%=I18n.t(c.status)%></dd>
-
-          <%= button_to 'Desativar transportadora', to_disable_carrier_path(c.id), method: :patch %> <br> 
         </dl>
-      <% elsif c.disable? %>
-        <dl>
-          <strong><dt>Razão social: </dt></strong>
-          <dd><%= link_to c.corporation_name, edit_carrier_path(c.id)%></dd>
+  </div>
 
-          <dt>CNPJ: </dt>
-          <dd><%=c.registration_number%></dd>
+  <% elsif admin_signed_in? %>
 
-          <dt>Status: </dt>
-          <dd><%=I18n.t(c.status)%></dd>
+   <br> <h1> Gestão de transportadoras </h1> <br>
 
-          <%= button_to 'Ativar transportadora', to_able_carrier_path(c.id), method: :patch %> <br> 
+    <%= form_with(url: search_prices_path, method: :get) do |f| %>
+      <%= f.label 'Consultar pré-orçamento'%> <br>
+
+      <%= f.label :volume, 'Volume (m3)' %>
+      <%= f.text_field :volume %>
+
+      <%= f.label :weight, 'Peso (g)' %>
+      <%= f.text_field :weight %>
+
+      <%= f.label :distance, 'Distância (km)' %>
+      <%= f.text_field :distance %>
+
+      <%= f.submit 'Consultar', :class => 'button_able' %>
+    <% end %>
+
+
+    <% if @carriers.any? %>
+      <h2> Transportadoras cadastradas: </h2>
+
+      <% @carriers.each do |c| %>
+        <% if c.able? %>
+          <dl>
+            <strong><dt>Razão social: </dt></strong>
+            <dd><%= link_to c.corporation_name, edit_carrier_path(c.id), :class => 'carrier_button' %></dd>
+
+            <dt>Nome Fantasia: </dt>
+            <dd><%=c.brand_name%></dd>
+
+            <dt>CNPJ: </dt>
+            <dd><%=c.registration_number%></dd>
+
+            <dt>Domínio de e-mail: </dt>
+            <dd><%=c.email_domain%></dd>
+
+            <dt>Endereço: </dt>
+            <dd><%=c.address%></dd>
+
+            <dt>Veículos: </dt>
+            <% c.vehicles.each do |v| %>
+              <dd> <%= link_to(v.license_plate, edit_vehicle_path(v.id)) %> </dd> 
+            <% end %>
+
+            <dt>Status: </dt>
+            <dd><%=I18n.t(c.status)%></dd>
+
+            <%= button_to 'Desativar transportadora', to_disable_carrier_path(c.id), method: :patch, :class => 'button_disable' %> <br> 
+          </dl>
+        <% elsif c.disable? %>
+          <dl>
+            <strong><dt>Razão social: </dt></strong>
+            <dd><%= link_to c.corporation_name, edit_carrier_path(c.id)%></dd>
+
+            <dt>CNPJ: </dt>
+            <dd><%=c.registration_number%></dd>
+
+            <dt>Status: </dt>
+            <dd><%=I18n.t(c.status)%></dd>
+
+            <%= button_to 'Ativar transportadora', to_able_carrier_path(c.id), method: :patch, :class => 'button_able' %> <br> 
+        <% end %>
+
       <% end %>
 
+    <% else %>
+      <p> Não há transportadoras cadastradas </p>
     <% end %>
 
-  <% else %>
-    <p> Não há transportadoras cadastradas </p>
   <% end %>
 
-  <%else%>
+<% else %>
+  <div class="center">
+    <p>Acesso ao sistema </p> <br>
+    <%= button_to 'Transportadora', new_carrier_user_session_path, method: :get, :class => 'button_access' %> <br>
+    <%= button_to 'Administrador', new_admin_session_path, method: :get, :class => 'button_access' %> 
+  </div>
+
+  <div class ="center">
     <%= form_with(url: search_service_orders_path, method: :get) do |f| %>
-      <%= f.label :query, 'Buscar encomenda'%> <br>
-      <%= f.text_field :query %>
-      <%= f.submit 'Buscar' %>
+      <%= f.label :query, 'Buscar encomenda'%>
+      <%= f.text_field :query, :class => 'search_bar' %>
+      <%= f.submit 'Buscar', :class => 'button_search' %>
     <% end %>
+  </div>
 <% end %>

@@ -1,57 +1,59 @@
-<h1>Cadastrar ordem de serviço </h1>
+<div class="margin"> 
+  <h1>Cadastrar ordem de serviço </h1> <br>
 
-<div>
-<% if @service_order.errors.any? %>
-  <ul>
-    <% @service_order.errors.full_messages.each do |m| %>
-      <li> <%= m %> </li>
-    <%end %>
-  </ul>
-<% end %>
+  <div class='warning'>
+  <% if @service_order.errors.any? %>
+    <ul>
+      <% @service_order.errors.full_messages.each do |m| %>
+        <li> <%= m %> </li>
+      <%end %>
+    </ul>
+  <% end %>
+  </div>
+
+  <%= form_with(model: @service_order) do |f| %>
+
+    <div>
+      <%= f.label :carrier_id %>
+      <%= f.collection_select :carrier_id, @carriers, :id, :description %>
+    </div>
+
+    <div>
+      <%= f.label :item_code %>
+      <%= f.text_field :item_code %>
+    </div>
+
+    <div>
+      <%= f.label :weight %> (g)
+      <%= f.number_field :weight %>
+    </div>
+
+    <div>
+      <%= f.label :volume %> (m³)
+      <%= f.number_field :volume %>
+    </div>
+
+    <div>
+      <%= f.label :recipient_name %>
+      <%= f.text_field :recipient_name %>
+    </div>
+
+    <div>
+      <%= f.label :recipient_CPF %>
+      <%= f.text_field :recipient_CPF %>
+    </div>
+
+    <div>
+      <%= f.label :pickup_address %>
+      <%= f.text_field :pickup_address %>
+    </div>
+
+    <div>
+      <%= f.label :delivery_address %>
+      <%= f.text_field :delivery_address %>
+    </div>
+
+    <%= f.submit class:'button_access'%>
+
+  <% end %>
 </div>
-
-<%= form_with(model: @service_order) do |f| %>
-
-  <div>
-    <%= f.label :carrier_id %>
-    <%= f.collection_select :carrier_id, @carriers, :id, :description %>
-  </div>
-
-  <div>
-    <%= f.label :item_code %>
-    <%= f.text_field :item_code %>
-  </div>
-
-  <div>
-    <%= f.label :weight %> (g)
-    <%= f.number_field :weight %>
-  </div>
-
-  <div>
-    <%= f.label :volume %> (m³)
-    <%= f.number_field :volume %>
-  </div>
-
-  <div>
-    <%= f.label :recipient_name %>
-    <%= f.text_field :recipient_name %>
-  </div>
-
-  <div>
-    <%= f.label :recipient_CPF %>
-    <%= f.text_field :recipient_CPF %>
-  </div>
-
-  <div>
-    <%= f.label :pickup_address %>
-    <%= f.text_field :pickup_address %>
-  </div>
-
-  <div>
-    <%= f.label :delivery_address %>
-    <%= f.text_field :delivery_address %>
-  </div>
-
-  <%= f.submit%>
-
-<% end %>

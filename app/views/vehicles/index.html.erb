@@ -1,17 +1,20 @@
-<h1> Veículos - <%= @carrier.corporation_name %></h1>
+<div class="margin">
+<h1> Veículos - <%= @carrier.corporation_name %></h1>  <br>
 
-<%= link_to 'Registrar veículo', new_vehicle_path %> <br>
+<p><%= link_to 'Registrar veículo', new_vehicle_path %></p> <br>
 
 <% @vehicles.each do |v| %> <br>
 
-  Placa: <%= link_to v.license_plate, edit_vehicle_path(v.id) %> <br>
+  <p> <%= link_to v.license_plate, edit_vehicle_path(v.id) %> <br> </p>
 
-  Marca: <%= v.brand %> <br>
+<div class="listing_vehicles" >
+  <p> Marca: <%= v.brand %> <br> </p>
 
-  Modelo: <%= v.model %> <br>
+  <p> Modelo: <%= v.model %> <br> </p>
 
-  Ano: <%= v.year %> <br>
+  <p> Ano: <%= v.year %> <br> </p>
 
-  Capacidade máxima: <%= v.maximum_charge %>kg <br>
-
+  <p> Capacidade máxima: <%= v.maximum_charge %>kg <br> <br> </p>
+</div>
 <% end %>
+</div>

@@ -10,33 +10,48 @@
   </head>
 
   <body>
-    <div>
-      <%= link_to 'Home', root_path %> <br>
+  <div class="header">
+    <header> <h1>Transportadoras & Fretes</h1> </header> 
+  </div>
+    <div class ="header_home">
+      <%= link_to 'Home', root_path %> <br> <br> <br>
     </div>
 
     <div>
       <% if carrier_user_signed_in? %>
-        <%= button_to 'Sair', destroy_carrier_user_session_path, method: :delete %> <br>
-        <p>Sessão atual:</p>
-        <p><%= current_carrier_user.name %> - <%= current_carrier_user.carrier.corporation_name %></p>
+        <div class="lefter_user">
+          <p>Sessão atual:</p>
+          <p><%= current_carrier_user.name %> - <%= current_carrier_user.carrier.corporation_name %></p>
+          <%= button_to 'Sair', destroy_carrier_user_session_path, method: :delete, :class => "exit_button" %> <br> <br> <br>
+        </div>
       <% elsif admin_signed_in? %>
-        <%= button_to 'Sair', destroy_admin_session_path, method: :delete %>
+      <div class="admin_options">
+        <%= link_to 'Registrar transportadora', new_carrier_path %> <br> <br> <br>
+      </div>
+
+      <div class="admin_options">
+        <%= link_to 'Cadastrar ordem de serviço', new_service_order_path%> <br> <br> <br>
+      </div>
+
+      <div class="admin_options">
+        <%= link_to 'Histórico de pré-orçamentos', price_log_searchs_path%> <br> <br> <br>
+      </div>
+      
+      <div class="lefter_user">
         <p>Sessão atual:</p>
         <p><%= current_admin.name %> - Administrador</p> 
-        <%= link_to 'Registrar transportadora', new_carrier_path %> <br>
-        <%= link_to 'Cadastrar ordem de serviço', new_service_order_path %> <br>
-        <%= link_to 'Histórico de pré-orçamentos', price_log_searchs_path%>
-
-      <% else %>
-      <p> Acessar como:
-        <%= button_to 'Transportadora', new_carrier_user_session_path, method: :get %>
-        <%= button_to 'Administrador', new_admin_session_path, method: :get %> </p>
+        <%= button_to 'Sair', destroy_admin_session_path, method: :delete, :class => "exit_button"  %>
+      </div>
       <% end %>
     </div>
 
+    <div class="message">
      <%= alert %> 
-     <%= notice %> 
-    <%= yield %> 
-    
+     <%= notice %>
+    </div> 
+    <%= yield %>
+    <div> 
+    <footer> Campus Code - TreinaDEV 8 <br> Todos os direitos reservados. </footer>
+    </div>
   </body>
 </html>

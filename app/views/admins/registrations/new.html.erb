@@ -1,4 +1,4 @@
-<h2>Cadastro de administrador </h2>
+<div class="center"> <h2>Cadastro de administrador </h2> <br>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "admins/shared/error_messages", resource: resource %>
@@ -21,9 +21,11 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Se inscrever" %>
+  <div>
+    <%= f.submit "Se inscrever", :class => "button_access_login" %> <br> <br>
   </div>
 <% end %>
 
 <%= render "admins/shared/links" %>
+
+ </div>

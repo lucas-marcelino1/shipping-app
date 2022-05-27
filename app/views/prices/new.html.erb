@@ -1,41 +1,43 @@
-<h1> Cadastrar preço </h1>
+<div class="margin">
+  <h1> Cadastrar preço </h1> <br>
 
-<p> O volume e o peso devem ser cadastrados em períodos.</p>
+  <p class='message'> O volume e o peso devem ser cadastrados em períodos.</p> <br>
 
-<div>
-<% if @price.errors.any? %>
-  <ul>
-  <% @price.errors.full_messages.each do |msg| %>
-    <li> <%= msg %>. </li>
+  <div class="warning">
+  <% if @price.errors.any? %>
+    <ul>
+    <% @price.errors.full_messages.each do |msg| %>
+      <li> <%= msg %>. </li>
+    <% end %>
+    </ul>
   <% end %>
-  </ul>
-<% end %>
+  </div>
+
+  <%= form_with(model:@price) do |f| %>
+
+    <div>
+      <%= f.label :initial_volume %>  <%= f.text_field :initial_volume %> <%= f.label :final_volume %>  <%= f.text_field :final_volume %>
+    </div>
+
+
+    <div>
+      <%= f.label :initial_weight %> <%= f.text_field :initial_weight %>  <%= f.label :final_weight %> <%= f.text_field :final_weight %>
+    </div>
+
+
+    <div>
+      <p><%= f.label :price_per_km %>
+      <%= f.text_field :price_per_km %> Reais</p>
+    </div>
+
+    <div>
+      <%= f.label :minimal_price %>  <%= f.text_field :minimal_price %> por <%= f.label :minimal_distance %> <%= f.text_field :minimal_distance %> 
+    </div>
+
+
+    <div>
+      <%= f.submit 'Cadastrar Preço', class: 'button_access' %>
+    </div>
+
+  <% end %>
 </div>
-
-<%= form_with(model:@price) do |f| %>
-
-  <div>
-    <%= f.label :initial_volume %>  <%= f.text_field :initial_volume %> <%= f.label :final_volume %>  <%= f.text_field :final_volume %>
-  </div>
-
-
-  <div>
-    <%= f.label :initial_weight %> <%= f.text_field :initial_weight %>  <%= f.label :final_weight %> <%= f.text_field :final_weight %>
-  </div>
-
-
-  <div>
-    <%= f.label :price_per_km %>
-    <%= f.text_field :price_per_km %> Reais
-  </div>
-
-  <div>
-    <%= f.label :minimal_price %>  <%= f.text_field :minimal_price %> por <%= f.label :minimal_distance %> <%= f.text_field :minimal_distance %> 
-  </div>
-
-
-  <div>
-    <%= f.submit 'Cadastrar Preço' %>
-  </div>
-
-<% end %>
