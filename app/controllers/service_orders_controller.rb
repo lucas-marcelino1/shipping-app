@@ -38,7 +38,7 @@ class ServiceOrdersController < ApplicationController
       return redirect_to(service_order_path(@service_order))
     end
     @service_order.accepted!
-    @route_update = RouteUpdate.new(service_order: @service_order, day: Date.today, hour: Time.now, local: 'Ainda não saiu para entrega.')
+    @route_update = RouteUpdate.new(service_order: @service_order, day: 1.day.from_now, hour: Time.now, local: 'Ainda não saiu para entrega.')
     @route_update.save!
     redirect_to(root_path, notice: 'Ordem de serviço aceita!')
   end
