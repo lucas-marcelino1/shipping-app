@@ -10,7 +10,7 @@ describe 'Admin cadastra ordem de serviço' do
     click_on('Cadastrar ordem de serviço')
     select('Reunidas Brasil LTDA - 12.345.678/1000-10', from: 'Transportadora')
     fill_in('Código do item', with: 'ABCDEFG')
-    fill_in('Volume', with: '50')
+    fill_in('Volume', with: '0.50')
     fill_in('Peso', with: '30')
     fill_in('Nome do destinatário', with: 'Júlia')
     fill_in('CPF do destinatário', with: '114.834.329-63')
@@ -39,7 +39,7 @@ describe 'Admin cadastra ordem de serviço' do
     click_on('Criar Ordem de Serviço')
 
     expect(page).to have_content('Não foi possível cadastrar a ordem de serviço')
-    expect(page).to have_content('Volume deve ser maior ou igual a 1')
+    expect(page).to have_content('Volume deve ser maior que 0')
     expect(page).to have_content('Endereço de coleta não pode ficar em branco')
     expect(page).to have_content('Nome do destinatário não pode ficar em branco')
     expect(page).to have_content('Código do item não pode ficar em branco')

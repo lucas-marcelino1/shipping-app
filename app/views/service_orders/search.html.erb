@@ -5,35 +5,24 @@
   <p> <%= Carrier.model_name.human %>: <%=@service_order.carrier.description%> <br> <%=I18n.t(:vehicle)%>: <%=@service_order.vehicle.license_plate %> | <%=@service_order.vehicle.brand %></p>
 
   <% if @service_order.finished? %>
-    <h3>Encomenda entregue.</h3>
-    <dl>
-      <dt><%=RouteUpdate.human_attribute_name(:day)%>:</dt>
-        <dd><%=I18n.localize(@route_updates.last.day)%></dd>
+    <br><h2>Encomenda entregue.</h2>
+    
+      <%=RouteUpdate.human_attribute_name(:day)%>: <%=I18n.localize(@route_updates.last.day)%> <br>  
+      <%=RouteUpdate.human_attribute_name(:hour)%>: <%=@route_updates.last.set_hour%> <br>
 
-        <dt><%=RouteUpdate.human_attribute_name(:hour)%>:</dt>
-        <dd><%=@route_updates.last.set_hour%></dd>
-
-        <p><%=RouteUpdate.human_attribute_name(:local)%>: <%=@route_updates.last.local%> <br>
-
-        <%=ServiceOrder.human_attribute_name(:recipient_name)%>: <%=@service_order.recipient_name%> <br>
-
-        <%=ServiceOrder.human_attribute_name(:item_code)%>: <%=@service_order.item_code%></p>
-    </dl>
-
+      <p><%=RouteUpdate.human_attribute_name(:local)%>: <%=@route_updates.last.local%> <br>  
+      <%=ServiceOrder.human_attribute_name(:recipient_name)%>: <%=@service_order.recipient_name%> <br>
+      <%=ServiceOrder.human_attribute_name(:item_code)%>: <%=@service_order.item_code%></p>
+  
     <% else%>
     <br> <h3> Últimas atualizações </h3>
     <% @route_updates.order(:id).reverse.each do |route_update|  %>
-      <dl>
-        <dt><%=RouteUpdate.human_attribute_name(:day)%>:</dt>
-        <dd><%=I18n.localize(route_update.day)%></dd>
-
-        <dt><%=RouteUpdate.human_attribute_name(:hour)%>:</dt>
-        <dd><%=route_update.set_hour%></dd>
-
-        <dt><%=RouteUpdate.human_attribute_name(:local)%>:</dt>
-        <dd><%=route_update.local%></dd>
-
-      <dl>
+      <%=RouteUpdate.human_attribute_name(:day) %>:
+      <%=I18n.localize(route_update.day)%> <br> 
+      <%=RouteUpdate.human_attribute_name(:hour) %>:
+      <%=route_update.set_hour%> <br> 
+      <%=RouteUpdate.human_attribute_name(:local) %>:
+      <%=route_update.local%> <br>  <br>   <br>    
     <% end %>
   <%end%>
 </div>

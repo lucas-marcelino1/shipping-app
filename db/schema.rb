@@ -79,10 +79,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_215546) do
     t.float "final_weight"
     t.float "price_per_km"
     t.float "minimal_price"
-    t.float "minimal_distance"
-    t.integer "carrier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "carrier_id", null: false
+    t.float "minimal_distance"
     t.index ["carrier_id"], name: "index_prices_on_carrier_id"
   end
 

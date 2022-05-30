@@ -35,13 +35,13 @@
       <%= f.label 'Consultar pré-orçamento'%> <br>
 
       <%= f.label :volume, 'Volume (m3)' %>
-      <%= f.text_field :volume %>
+      <%= f.number_field :volume, step: :any %>
 
       <%= f.label :weight, 'Peso (g)' %>
-      <%= f.text_field :weight %>
+      <%= f.number_field :weight, step: :any %>
 
       <%= f.label :distance, 'Distância (km)' %>
-      <%= f.text_field :distance %>
+      <%= f.number_field :distance %>
 
       <%= f.submit 'Consultar', :class => 'button_able' %>
     <% end %>
