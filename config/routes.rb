@@ -21,4 +21,10 @@ Rails.application.routes.draw do
     patch :to_finish, on: :member
   end
   resources :price_log_searchs, only: [:index]
+
+  namespace :api do
+    namespace :v1 do
+      resources :carriers, only: %i[index]
+    end
+  end
 end
