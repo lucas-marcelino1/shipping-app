@@ -105,6 +105,10 @@ GEM
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
+    jsonapi-resources (0.10.7)
+      activerecord (>= 4.1)
+      concurrent-ruby
+      railties (>= 4.1)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -220,6 +224,7 @@ DEPENDENCIES
   debug
   devise
   factory_bot_rails
+  jsonapi-resources
   puma (~> 5.0)
   rails (~> 7.0.3)
   rspec-rails
