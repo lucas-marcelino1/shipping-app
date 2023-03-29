@@ -1,5 +1,5 @@
 # SICREDI API
-### RESUMO
+## RESUMO
 API utilizada para o projeto da SICREDI no qual contempla funcionalidades a respeito do gerenciamento de patrimônios das agências, contatos e dispositivos, englobando aspectos como contagem de imobilizados, geração de ocorrências e relatórios, cadastro automático de dispositivos, transferência de contatos, entre outras funcionalidades básicas como cadastro, listagem, atualização e exclusão de dados.
 
 ####  Instale, configure e execute esse projeto:
@@ -70,7 +70,8 @@ bundle exec sidekiq -q default
 #### **Headers**
 - Deve-se adicionar o header **jwd-aud**: com o valor de *web_app_client* para acessar as funcionalidades como um usuário Web;
 - Deve-se adicionar o header **jwd-aud** com o valor de *mobile_app_client* para acessar as funcionalidades como um usuário Mobile;
-**Obs**: Deve-se enviar este header em toda requisição.
+
+**Obs: Deve-se enviar este header em toda requisição.**
 
 # GLOSSÁRIO
 - Property: Patrimônio;
