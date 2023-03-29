@@ -70,7 +70,7 @@ bundle exec sidekiq -q default
 #### **Headers**
 - Deve-se adicionar o header **jwd-aud**: com o valor de *web_app_client* para acessar as funcionalidades como um usuário Web;
 - Deve-se adicionar o header **jwd-aud** com o valor de *mobile_app_client* para acessar as funcionalidades como um usuário Mobile;
-
+####
 **Obs: Deve-se enviar este header em toda requisição.**
 
 # GLOSSÁRIO
